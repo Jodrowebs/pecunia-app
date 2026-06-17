@@ -684,10 +684,109 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',syste
   </div>
 </div>
 
+<!-- ONBOARDING -->
+<div class="modal on" id="onboarding-modal">
+  <div class="modal-sheet" style="padding-bottom:32px">
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="width:56px;height:56px;background:#0a0a0a;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+        <svg width="32" height="32" viewBox="0 0 40 40"><text x="4" y="33" font-size="34" font-weight="800" fill="#fff" font-family="-apple-system,sans-serif">F</text></svg>
+      </div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.5px">Bienvenido a Finora</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:4px">Tu asesor financiero con IA</div>
+    </div>
+    <label class="form-label">¿Cómo te llamas?</label>
+    <input class="form-input" id="ob-name" placeholder="Tu nombre" autocomplete="given-name">
+    <label class="form-label">¿Cuál es tu situación?</label>
+    <div class="type-toggle" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:16px">
+      <button class="type-btn active" id="ob-autonomo" onclick="selectMode('autonomo')">Autónomo</button>
+      <button class="type-btn" id="ob-personal" onclick="selectMode('personal')">Empleado</button>
+      <button class="type-btn" id="ob-pareja" onclick="selectMode('pareja')">Pareja</button>
+    </div>
+    <label class="form-label">Ingresos mensuales aprox. (€)</label>
+    <input class="form-input" id="ob-income" type="number" inputmode="numeric" placeholder="Ej: 2500">
+    <label class="form-label">Gastos mensuales aprox. (€)</label>
+    <input class="form-input" id="ob-expenses" type="number" inputmode="numeric" placeholder="Ej: 1500">
+    <button class="btn-save" onclick="finishOnboarding()">Empezar</button>
+  </div>
+</div>
+
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
+// ─── USUARIO ─────────────────────────────────────────────
+let userData = JSON.parse(localStorage.getItem('finora_user') || 'null')
+let userMode = 'autonomo'
+
+function selectMode(m){
+  userMode = m
+  ;['autonomo','personal','pareja'].forEach(id=>{
+    document.getElementById('ob-'+id).className = 'type-btn' + (id===m?' active':'')
+  })
+}
+
+function finishOnboarding(){
+  const name = document.getElementById('ob-name').value.trim()
+  const income = parseFloat(document.getElementById('ob-income').value) || 0
+  const expenses = parseFloat(document.getElementById('ob-expenses').value) || 0
+  if(!name){ showToast('Escribe tu nombre'); return }
+  if(!income){ showToast('Escribe tus ingresos aproximados'); return }
+
+  userData = { name, mode: userMode, income, expenses, savings: 0, createdAt: Date.now() }
+  localStorage.setItem('finora_user', JSON.stringify(userData))
+  document.getElementById('onboarding-modal').classList.remove('on')
+  initApp()
+}
+
+function initApp(){
+  const now = new Date()
+  const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+  document.getElementById('tb-month').textContent = months[now.getMonth()] + ' ' + now.getFullYear()
+  const hour = now.getHours()
+  const greeting = hour<12 ? 'Buenos días' : hour<18 ? 'Buenas tardes' : 'Buenas noches'
+  const name = userData ? userData.name : 'Usuario'
+  document.getElementById('tb-greeting').textContent = greeting + ', ' + name
+
+  const benefit = userData ? (userData.income - userData.expenses) : 0
+  document.querySelector('.topbar-balance').textContent = benefit.toLocaleString('es-ES') + ' €'
+
+  if(userData){
+    const savRate = userData.income > 0 ? Math.round((benefit/userData.income)*100) : 0
+    document.querySelector('.topbar-change').innerHTML = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9V3M6 3L3 6M6 3L9 6" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Tasa de ahorro: ${savRate}%`
+    document.getElementById('home-ai-bubble').innerHTML = `Hola ${userData.name}, soy tu asesor financiero Finora.<br><br>Con ingresos de <strong>${userData.income.toLocaleString('es-ES')} €/mes</strong> y gastos de <strong>${userData.expenses.toLocaleString('es-ES')} €/mes</strong>, tu beneficio neto es <strong>${benefit.toLocaleString('es-ES')} €/mes</strong>.<br><br>Pregúntame cualquier cosa sobre tus finanzas.`
+    // Reset chat
+    const msgs = document.getElementById('chat-msgs')
+    msgs.innerHTML = `<div class="bubble ai">Hola ${userData.name}. Soy Finora, tu asesor financiero personal.<br><br>Veo que tienes unos ingresos de <strong>${userData.income.toLocaleString('es-ES')} €/mes</strong> y gastos de <strong>${userData.expenses.toLocaleString('es-ES')} €/mes</strong>. Tu beneficio neto mensual es <strong>${benefit.toLocaleString('es-ES')} €</strong>.<br><br>¿Por dónde quieres empezar?</div>`
+  }
+}
+
+function buildSystemPrompt(){
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = now.toLocaleDateString('es-ES', {month:'long'})
+  const benefit = userData ? (userData.income - userData.expenses) : 0
+  const savRate = userData && userData.income > 0 ? Math.round((benefit/userData.income)*100) : 0
+  const modeStr = userData?.mode === 'autonomo' ? 'autónomo/a' : userData?.mode === 'pareja' ? 'en pareja' : 'empleado/a'
+
+  return `Eres Finora, un asesor financiero personal con IA para España. Eres experto en:
+- Fiscalidad española: autónomos, IVA, IRPF, Modelo 303, 130, 100, gastos deducibles
+- Finanzas personales: ahorro, inversión, presupuesto, fondo de emergencia
+- Planificación financiera: objetivos, deudas, planes de pensiones, fondos indexados
+
+Fecha actual: ${month} de ${year}
+Año fiscal actual: ${year}
+
+Datos del usuario:
+- Nombre: ${userData?.name || 'Usuario'}
+- Situación: ${modeStr}
+- Ingresos mensuales: ${userData?.income?.toLocaleString('es-ES') || 0} euros
+- Gastos mensuales: ${userData?.expenses?.toLocaleString('es-ES') || 0} euros
+- Beneficio neto mensual: ${benefit.toLocaleString('es-ES')} euros
+- Tasa de ahorro: ${savRate}%
+
+Responde siempre en español, de forma clara y directa. Sé concreto con números cuando sea posible. Máximo 4-5 líneas por respuesta salvo que el usuario pida más detalle. Cuando des consejo fiscal añade al final: "Consulta con tu gestor fiscal antes de aplicarlo."`
+}
+
 // NAV
 const SECS = ['inicio','asesor','fiscal','personal','edu']
 let currentSec = 'inicio'
@@ -706,30 +805,11 @@ function goTo(id, btn){
   if(id==='asesor') document.getElementById('chat-inp').focus()
 }
 
-// ─── AI ──────────────────────────────────────────────────
-const chatHistory = []
-
-const SYSTEM_PROMPT = `Eres Finora, un asesor financiero personal con IA para España. Eres experto en:
-- Fiscalidad española: autónomos, IVA, IRPF, Modelo 303, 130, 100, gastos deducibles
-- Finanzas personales: ahorro, inversión, presupuesto, fondo de emergencia
-- Planificación financiera: objetivos, deudas, planes de pensiones, fondos indexados
-
-Datos del usuario actual (María García, autónoma):
-- Ingresos junio: 4.200 euros | Gastos: 1.847 euros | Beneficio neto: 2.353 euros
-- Ahorro total acumulado: 8.420 euros | Tasa de ahorro: 56%
-- IVA Q2 pendiente: 2.982 euros (vence 20 julio)
-- Facturación anual 2026: 48.600 euros
-- Gastos deducibles registrados: 4.820 euros (ahorro fiscal estimado: 964 euros)
-- Categorías de gasto más altas: restaurantes 287 euros/mes (+34%), software 180 euros/mes
-- Objetivos: vacaciones Japón (1.240/3.000 euros), ordenador nuevo (800/2.500 euros)
-
-Responde siempre en español, de forma clara y directa. Sé concreto con números cuando sea posible. Máximo 4-5 líneas por respuesta salvo que el usuario pida más detalle. Cuando des consejo fiscal añade al final: "Consulta con tu gestor fiscal antes de aplicarlo."`
-
 async function callAI(userMessage){
   chatHistory.push({ role: 'user', content: userMessage })
 
   const messages = [
-    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'system', content: buildSystemPrompt() },
     ...chatHistory.slice(-10)
   ]
 
@@ -852,7 +932,15 @@ setTimeout(()=>{
   const s = document.getElementById('splash')
   s.style.transition = 'opacity .4s'
   s.style.opacity = '0'
-  setTimeout(()=>{ s.style.display='none'; document.getElementById('app').classList.add('on') }, 400)
+  setTimeout(()=>{
+    s.style.display = 'none'
+    document.getElementById('app').classList.add('on')
+    if(userData){
+      document.getElementById('onboarding-modal').classList.remove('on')
+      initApp()
+    }
+    // si no hay userData, el onboarding ya está visible (on por defecto)
+  }, 400)
 }, 1900)
 </script>
 </body>
