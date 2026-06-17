@@ -7,7 +7,75 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a0a0a">
-<title>Finora</title>
+<title>Finora – Asesor Financiero con IA para España | Gestión de dinero inteligente</title>
+<meta name="description" content="Finora es tu asesor financiero personal con inteligencia artificial. Controla tus ingresos y gastos, optimiza tus impuestos, ahorra más y toma mejores decisiones financieras. Gratis para empezar.">
+<meta name="keywords" content="asesor financiero IA España, gestión dinero personal, control gastos autónomo, ahorro inteligente, declaración renta, IVA autónomos, finanzas personales app, planificación financiera">
+<meta name="author" content="Finora">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jonathandiaz2008pro-glitch.github.io/finora-app/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jonathandiaz2008pro-glitch.github.io/finora-app/">
+<meta property="og:title" content="Finora – Asesor Financiero con IA para España">
+<meta property="og:description" content="Controla tus finanzas, optimiza tus impuestos y ahorra más con tu asesor financiero personal con IA. Especialmente diseñado para autónomos y particulares en España.">
+<meta property="og:image" content="https://jonathandiaz2008pro-glitch.github.io/finora-app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Finora">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Finora – Asesor Financiero con IA para España">
+<meta name="twitter:description" content="Controla tus finanzas, optimiza impuestos y ahorra más con IA. Gratis para empezar.">
+<meta name="twitter:image" content="https://jonathandiaz2008pro-glitch.github.io/finora-app/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Finora",
+  "description": "Asesor financiero personal con inteligencia artificial para España. Gestión de gastos, fiscalidad de autónomos, ahorro e inversión.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Plan Gratuito",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Acceso básico con 3 consultas IA al día"
+    },
+    {
+      "@type": "Offer",
+      "name": "Plan Pro",
+      "price": "9",
+      "priceCurrency": "EUR",
+      "billingIncrement": "month",
+      "description": "30 consultas IA al día, fiscal completo, análisis de gastos"
+    },
+    {
+      "@type": "Offer",
+      "name": "Plan Financiero",
+      "price": "19",
+      "priceCurrency": "EUR",
+      "billingIncrement": "month",
+      "description": "IA ilimitada, inversiones, asesor humano"
+    }
+  ],
+  "inLanguage": "es",
+  "url": "https://jonathandiaz2008pro-glitch.github.io/finora-app/",
+  "screenshot": "https://jonathandiaz2008pro-glitch.github.io/finora-app/og-image.png",
+  "featureList": [
+    "Asesor financiero con IA en español",
+    "Control de gastos e ingresos",
+    "Fiscalidad para autónomos (IVA, IRPF, Modelos)",
+    "Análisis de ahorro y tasa de ahorro",
+    "Planificación de inversiones",
+    "Alertas de vencimientos fiscales"
+  ]
+}
+</script>
 <link rel="manifest" href="manifest.json">
 <script src="https://js.puter.com/v2/"></script>
 <style>
@@ -248,6 +316,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .fab{position:fixed;bottom:calc(74px + var(--safe-bot));right:16px;width:50px;height:50px;background:#0a0a0a;border-radius:14px;display:none;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:99}
 .fab svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
+/* LOCK OVERLAY */
+.lock-wrap{position:relative;overflow:hidden;border-radius:var(--r)}
+.lock-wrap .lock-blur{filter:blur(4px);pointer-events:none;user-select:none;opacity:.5}
+.lock-gate{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.88);backdrop-filter:blur(2px);border-radius:var(--r);text-align:center;padding:20px}
+.lock-icon{width:40px;height:40px;border-radius:12px;background:#0a0a0a;display:flex;align-items:center;justify-content:center;margin:0 auto}
+.lock-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lock-title{font-size:14px;font-weight:700}
+.lock-desc{font-size:12px;color:var(--text2);line-height:1.5;max-width:220px}
+.lock-btn{background:#0a0a0a;color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.lock-pro{background:#eff6ff;border-color:var(--accent)}.lock-pro .lock-gate{background:rgba(239,246,255,.92)}
+.lock-pro .lock-btn{background:var(--accent)}
+
 /* TOAST */
 .toast{position:fixed;bottom:calc(78px + var(--safe-bot));left:50%;transform:translateX(-50%) translateY(12px);background:#0a0a0a;color:#fff;padding:11px 20px;border-radius:24px;font-size:13px;font-weight:500;z-index:500;opacity:0;transition:all .25s;white-space:nowrap;pointer-events:none}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -409,7 +489,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
       <!-- FISCAL -->
       <div class="sec" id="sec-fiscal">
         <div class="sec-head"><h2>Centro Fiscal</h2><p id="fiscal-sub">Impuestos sin sorpresas</p></div>
-        <div id="fiscal-autonomo">
+
+        <!-- Teaser gratis: próximos vencimientos siempre visible -->
+        <div class="alert alert-warn" style="margin-bottom:12px">
+          <div class="alert-icon"><svg viewBox="0 0 18 18"><path d="M9 2L2 14h14L9 2z"/><path d="M9 8v3M9 13h.01"/></svg></div>
+          <div class="alert-text"><strong>Próximo vencimiento</strong><span id="fiscal-next-deadline">Modelo 303 (IVA) · 20 julio</span></div>
+        </div>
+
+        <!-- BLOQUEADO para free -->
+        <div id="fiscal-lock-wrap" class="lock-wrap lock-pro" style="margin-bottom:12px">
+          <div class="lock-blur">
+            <div class="stat-grid" style="margin-bottom:12px">
+              <div class="stat-card"><div class="stat-label">IVA trimestral</div><div class="stat-value neg">•••</div></div>
+              <div class="stat-card"><div class="stat-label">IRPF estimado</div><div class="stat-value">•••</div></div>
+              <div class="stat-card"><div class="stat-label">Facturación anual</div><div class="stat-value">•••</div></div>
+              <div class="stat-card"><div class="stat-label">Ahorro fiscal</div><div class="stat-value pos">•••</div></div>
+            </div>
+          </div>
+          <div class="lock-gate">
+            <div class="lock-icon"><svg viewBox="0 0 18 18"><rect x="4" y="8" width="10" height="8" rx="2"/><path d="M6 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+            <div class="lock-title">Centro Fiscal completo</div>
+            <div class="lock-desc">Calcula tu IVA, IRPF y gastos deducibles en tiempo real. Solo en Plan Pro.</div>
+            <button class="lock-btn" onclick="goTo('planes')">Ver Plan Pro – 9 €/mes</button>
+          </div>
+        </div>
+
+        <!-- Contenido real (visible solo con Pro+) -->
+        <div id="fiscal-autonomo" style="display:none">
           <div class="stat-grid">
             <div class="stat-card"><div class="stat-label">IVA Q2 estimado</div><div class="stat-value neg" id="iva-estimate">—</div><div class="stat-change warn">Vence 20 julio</div></div>
             <div class="stat-card"><div class="stat-label">IRPF estimado</div><div class="stat-value" id="irpf-estimate">—</div></div>
@@ -437,13 +543,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
             <div style="margin-top:12px;font-size:13px;color:var(--text2);line-height:1.6">Como empleado, tu empresa retiene el IRPF cada mes. La declaración de la Renta (Modelo 100) se presenta entre abril y junio del año siguiente.</div>
           </div>
         </div>
+
+        <!-- Bloqueo Financiero: análisis de inversiones -->
+        <div id="fiscal-invest-wrap" class="lock-wrap" style="margin-top:12px">
+          <div class="lock-blur">
+            <div class="card card-pad"><div class="card-head"><div class="card-title">Análisis de inversiones</div></div><div style="height:60px"></div></div>
+          </div>
+          <div class="lock-gate">
+            <div class="lock-icon"><svg viewBox="0 0 18 18"><path d="M3 15l4-4 3 3 5-6"/><path d="M2 2h14v14"/></svg></div>
+            <div class="lock-title">Análisis de inversiones</div>
+            <div class="lock-desc">Fondos indexados, ETFs y plan de jubilación personalizados. Solo en Plan Financiero.</div>
+            <button class="lock-btn" onclick="goTo('planes')">Ver Plan Financiero – 19 €/mes</button>
+          </div>
+        </div>
       </div>
 
       <!-- FINANZAS -->
       <div class="sec" id="sec-finanzas">
         <div class="sec-head"><h2>Mis Finanzas</h2><p>Control de tus movimientos</p></div>
         <div class="card card-pad" id="tx-card">
-          <div class="card-head"><div class="card-title">Movimientos</div></div>
+          <div class="card-head"><div class="card-title">Movimientos</div><span id="tx-limit-tag" class="card-link" style="font-size:11px;color:var(--text2)"></span></div>
           <div id="tx-list"><div style="font-size:13px;color:var(--text2);text-align:center;padding:20px 0">Aún no hay movimientos.</div></div>
         </div>
       </div>
@@ -622,10 +741,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <script>
 // ─── DATOS ───────────────────────────────────────────────
 const PLANS = {
-  free:       { name:'Plan Gratuito', limit:5,  chipClass:'chip-free' },
+  free:       { name:'Plan Gratuito', limit:3,  chipClass:'chip-free' },
   pro:        { name:'Plan Pro',      limit:30, chipClass:'chip-pro' },
   financiero: { name:'Financiero',    limit:999,chipClass:'chip-fin' }
 }
+
+function isPro(){ const p = user?.plan||'free'; return p==='pro'||p==='financiero' }
+function isFinanciero(){ return user?.plan==='financiero' }
 
 let user = null
 let transactions = []
@@ -757,13 +879,15 @@ function initDashboard(){
   document.getElementById('tb-avatar').textContent = initials
   document.getElementById('prof-avatar').textContent = initials
   document.getElementById('prof-name').textContent = user.name
-  document.getElementById('prof-email').textContent = user.email
-  document.getElementById('prof-income').textContent = user.income.toLocaleString('es-ES') + ' €'
-  document.getElementById('prof-expenses').textContent = user.expenses.toLocaleString('es-ES') + ' €'
-  document.getElementById('prof-mode').textContent = {autonomo:'Autónomo',empleado:'Empleado',pareja:'Pareja'}[user.mode]||user.mode
+  document.getElementById('prof-email').textContent = user.email || ''
+  document.getElementById('prof-income').textContent = (user.income||0).toLocaleString('es-ES') + ' €'
+  document.getElementById('prof-expenses').textContent = (user.expenses||0).toLocaleString('es-ES') + ' €'
+  document.getElementById('prof-mode').textContent = {autonomo:'Autónomo',empleado:'Empleado',pareja:'Pareja'}[user.mode]||user.mode||'—'
 
-  const benefit = user.income - user.expenses
-  const savRate = user.income > 0 ? Math.round((benefit/user.income)*100) : 0
+  const income = user.income || 0
+  const expenses = user.expenses || 0
+  const benefit = income - expenses
+  const savRate = income > 0 ? Math.round((benefit/income)*100) : 0
 
   document.getElementById('tb-balance').textContent = benefit.toLocaleString('es-ES') + ' €'
   document.getElementById('tb-change').innerHTML = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9V3M6 3L3 6M6 3L9 6" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Tasa de ahorro: ${savRate}%`
@@ -771,61 +895,91 @@ function initDashboard(){
   const plan = user.plan || 'free'
   const planInfo = PLANS[plan]
   const chipEl = document.getElementById('tb-plan-chip')
-  chipEl.textContent = planInfo.name + (plan==='free' ? ' · 5 preguntas/día' : plan==='pro' ? ' · 30 preguntas/día' : ' · IA ilimitada')
+  chipEl.textContent = planInfo.name + (plan==='free' ? ' · 3 preguntas/día' : plan==='pro' ? ' · 30 preguntas/día' : ' · IA ilimitada')
   chipEl.className = 'plan-chip ' + planInfo.chipClass
   document.getElementById('prof-plan-chip').textContent = planInfo.name
   document.getElementById('prof-plan-chip').className = 'plan-chip ' + planInfo.chipClass
 
-  document.getElementById('st-income').textContent = user.income.toLocaleString('es-ES') + ' €'
-  document.getElementById('st-expenses').textContent = user.expenses.toLocaleString('es-ES') + ' €'
+  document.getElementById('st-income').textContent = income.toLocaleString('es-ES') + ' €'
+  document.getElementById('st-expenses').textContent = expenses.toLocaleString('es-ES') + ' €'
   document.getElementById('st-benefit').textContent = benefit.toLocaleString('es-ES') + ' €'
   document.getElementById('st-savrate').textContent = savRate + '%'
 
-  document.getElementById('home-ai-bubble').innerHTML = `Hola <strong>${user.name.split(' ')[0]}</strong>. Con ingresos de <strong>${user.income.toLocaleString('es-ES')} €/mes</strong> y gastos de <strong>${user.expenses.toLocaleString('es-ES')} €/mes</strong>, tu beneficio neto es <strong>${benefit.toLocaleString('es-ES')} €/mes</strong>.<br><br>Puedes preguntarme cualquier cosa sobre tus finanzas.`
+  // Mensaje inicio con nota de plan para free
+  const freeNote = !isPro() ? `<br><br><span style="font-size:11px;color:#6b7280">Plan gratuito · ${getAiRemaining()} preguntas hoy · <span style="color:#2563eb;cursor:pointer" onclick="goTo('planes')">Mejorar plan</span></span>` : ''
+  document.getElementById('home-ai-bubble').innerHTML = `Hola <strong>${user.name.split(' ')[0]}</strong>. Tu beneficio neto es <strong>${benefit.toLocaleString('es-ES')} €/mes</strong> con una tasa de ahorro del <strong>${savRate}%</strong>.<br>Pregúntame lo que quieras sobre tus finanzas.${freeNote}`
 
-  // Fiscal
-  if(user.mode === 'autonomo'){
-    document.getElementById('fiscal-autonomo').style.display = 'block'
-    document.getElementById('fiscal-empleado').style.display = 'none'
-    const iva = Math.round(user.income * 3 * 0.21)
-    const irpf = Math.round(user.income * 12 * 0.2)
-    document.getElementById('iva-estimate').textContent = iva.toLocaleString('es-ES') + ' €'
-    document.getElementById('irpf-estimate').textContent = irpf.toLocaleString('es-ES') + ' €'
-    document.getElementById('facturacion').textContent = (user.income * 12).toLocaleString('es-ES') + ' €'
-    document.getElementById('ahorro-fiscal').textContent = Math.round(irpf * 0.15).toLocaleString('es-ES') + ' €'
+  // Fiscal: bloqueo para free, datos reales para Pro+
+  const lockWrap = document.getElementById('fiscal-lock-wrap')
+  const fiscalInvest = document.getElementById('fiscal-invest-wrap')
+  if(isPro()){
+    lockWrap.style.display = 'none'
+    fiscalInvest.style.display = isFinanciero() ? 'none' : 'block'
+    if(user.mode === 'autonomo'){
+      document.getElementById('fiscal-autonomo').style.display = 'block'
+      document.getElementById('fiscal-empleado').style.display = 'none'
+      const iva = Math.round(income * 3 * 0.21)
+      const irpf = Math.round(income * 12 * 0.2)
+      document.getElementById('iva-estimate').textContent = iva.toLocaleString('es-ES') + ' €'
+      document.getElementById('irpf-estimate').textContent = irpf.toLocaleString('es-ES') + ' €'
+      document.getElementById('facturacion').textContent = (income * 12).toLocaleString('es-ES') + ' €'
+      document.getElementById('ahorro-fiscal').textContent = Math.round(irpf * 0.15).toLocaleString('es-ES') + ' €'
+    } else {
+      document.getElementById('fiscal-autonomo').style.display = 'none'
+      document.getElementById('fiscal-empleado').style.display = 'block'
+      document.getElementById('irpf-emp').textContent = Math.round(income * 12 * 0.15).toLocaleString('es-ES') + ' €'
+    }
   } else {
+    lockWrap.style.display = 'block'
+    fiscalInvest.style.display = 'block'
     document.getElementById('fiscal-autonomo').style.display = 'none'
-    document.getElementById('fiscal-empleado').style.display = 'block'
-    document.getElementById('irpf-emp').textContent = Math.round(user.income * 12 * 0.15).toLocaleString('es-ES') + ' €'
+    document.getElementById('fiscal-empleado').style.display = 'none'
   }
 
   renderTxList()
-  // Reset chat welcome
-  document.getElementById('chat-msgs').innerHTML = `<div class="bubble ai">Hola <strong>${user.name.split(' ')[0]}</strong>. Soy tu asesor financiero Finora.<br><br>Sé que tienes ingresos de <strong>${user.income.toLocaleString('es-ES')} €/mes</strong> y gastos de <strong>${user.expenses.toLocaleString('es-ES')} €/mes</strong>. ¿En qué te puedo ayudar?</div>`
+
+  document.getElementById('chat-msgs').innerHTML = `<div class="bubble ai">Hola <strong>${user.name.split(' ')[0]}</strong>. Soy Finora, tu asesor financiero con IA.<br><br>Tienes ingresos de <strong>${income.toLocaleString('es-ES')} €/mes</strong> y una tasa de ahorro del <strong>${savRate}%</strong>. ¿En qué te puedo ayudar hoy?</div>`
   chatHistory.length = 0
 }
 
 function renderTxList(){
   const listHome = document.getElementById('tx-list-home')
   const listFin  = document.getElementById('tx-list')
-  const svgIn = `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="14" height="11" rx="2"/><path d="M5 8h5M5 11h3"/></svg>`
+  const limitTag = document.getElementById('tx-limit-tag')
+  const svgIn  = `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="14" height="11" rx="2"/><path d="M5 8h5M5 11h3"/></svg>`
   const svgOut = `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h12M5 3h8"/><rect x="2" y="6" width="14" height="10" rx="1.5"/></svg>`
 
   if(!transactions.length){
     listHome.innerHTML = `<div style="font-size:13px;color:var(--text2);text-align:center;padding:16px 0">Aún no hay movimientos.</div>`
     listFin.innerHTML  = `<div style="font-size:13px;color:var(--text2);text-align:center;padding:20px 0">Añade tu primer movimiento con el botón +</div>`
+    if(limitTag) limitTag.textContent = ''
     return
   }
 
-  const html = [...transactions].reverse().map(t=>`
+  const FREE_LIMIT = 5
+  const all = [...transactions].reverse()
+  const makeTx = t => `
     <div class="tx-item">
       <div class="tx-icon ${t.type}">${t.type==='ingreso'?svgIn:svgOut}</div>
       <div class="tx-info"><div class="tx-name">${t.desc}</div><div class="tx-cat">${t.cat} · ${t.date}</div></div>
       <div class="tx-amount ${t.type==='ingreso'?'pos':'neg'}">${t.type==='ingreso'?'+':'−'}${parseFloat(t.amount).toLocaleString('es-ES')} €</div>
-    </div>`).join('')
+    </div>`
 
-  listHome.innerHTML = html.split('</div>\n    </div>').slice(0,4).join('</div>\n    </div>') + '</div>\n    </div>'
-  listFin.innerHTML  = html
+  // Inicio: últimos 4
+  listHome.innerHTML = all.slice(0,4).map(makeTx).join('')
+
+  // Finanzas: limitar a FREE_LIMIT para plan free
+  if(!isPro() && all.length > FREE_LIMIT){
+    listFin.innerHTML = all.slice(0, FREE_LIMIT).map(makeTx).join('') +
+      `<div style="text-align:center;padding:16px 0 4px">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:8px">${all.length - FREE_LIMIT} movimientos más bloqueados</div>
+        <button onclick="goTo('planes')" style="background:#0a0a0a;color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Desbloquear con Pro · 9 €/mes</button>
+      </div>`
+    if(limitTag) limitTag.textContent = `${FREE_LIMIT} de ${all.length} · Plan free`
+  } else {
+    listFin.innerHTML = all.map(makeTx).join('')
+    if(limitTag) limitTag.textContent = ''
+  }
 }
 
 // ─── NAV ──────────────────────────────────────────────────
