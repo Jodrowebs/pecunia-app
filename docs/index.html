@@ -447,6 +447,98 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
 .plan-feature-check::before{content:'✓';color:var(--green);font-weight:700;font-size:11px}
 .plan-popular{position:absolute;top:-1px;right:16px;background:linear-gradient(90deg,var(--gold),var(--gold-light));color:var(--dark);font-size:9px;font-weight:800;padding:3px 10px;border-radius:0 0 8px 8px;letter-spacing:.5px;text-transform:uppercase}
 
+/* ─── PRICING REDESIGN ────────────────────────────────── */
+.pricing-hero{text-align:center;margin-bottom:22px}
+.pricing-hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold-bg);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.3px;margin-bottom:12px}
+.pricing-hero-title{font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:8px;line-height:1.2}
+.pricing-hero-sub{font-size:12px;color:var(--text2);line-height:1.6;max-width:300px;margin:0 auto}
+
+.savings-callout{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:16px;padding:14px 16px;margin-bottom:18px;text-align:center}
+.savings-callout-title{font-size:13px;font-weight:700;color:#15803d;margin-bottom:3px}
+.savings-callout-sub{font-size:11px;color:#166534;line-height:1.5}
+
+.pricing-card-new{border-radius:20px;padding:22px;margin-bottom:14px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pricing-card-new:active{transform:scale(.99)}
+.pc-free{background:var(--surface);border:1.5px solid var(--border);box-shadow:var(--shadow)}
+.pc-pro{background:var(--dark);border:2px solid var(--gold);box-shadow:0 8px 40px rgba(201,168,76,.2),0 2px 12px rgba(0,0,0,.2);padding:28px 22px}
+.pc-pro::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);pointer-events:none}
+.pc-auto{background:linear-gradient(135deg,#0d1117 0%,#161b22 100%);border:1.5px solid #30363d;box-shadow:0 4px 24px rgba(0,0,0,.35)}
+.pc-auto::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(99,102,241,.12) 0%,transparent 70%);pointer-events:none}
+
+.pc-popular-badge{position:absolute;top:0;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--gold),var(--gold-light));color:var(--dark);font-size:9px;font-weight:800;padding:4px 18px;border-radius:0 0 12px 12px;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;z-index:1}
+.pc-plan-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.pc-free .pc-plan-name{color:var(--text2)}
+.pc-pro .pc-plan-name{color:var(--gold-light)}
+.pc-auto .pc-plan-name{color:#a78bfa}
+.pc-price{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.pc-price-amount{font-size:40px;font-weight:800;letter-spacing:-2px;line-height:1}
+.pc-free .pc-price-amount{color:var(--text)}
+.pc-pro .pc-price-amount,.pc-auto .pc-price-amount{color:#fff}
+.pc-price-period{font-size:12px;font-weight:500;color:var(--text3)}
+.pc-pro .pc-price-period,.pc-auto .pc-price-period{color:#6b7280}
+.pc-desc{font-size:12px;line-height:1.5;margin:6px 0 16px}
+.pc-free .pc-desc{color:var(--text2)}
+.pc-pro .pc-desc{color:#9ca3af}
+.pc-auto .pc-desc{color:#6b7280}
+.pc-divider{height:1px;margin-bottom:16px}
+.pc-free .pc-divider{background:var(--border2)}
+.pc-pro .pc-divider{background:rgba(255,255,255,.08)}
+.pc-auto .pc-divider{background:rgba(255,255,255,.08)}
+.pc-features{list-style:none;margin-bottom:18px}
+.pc-feature{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:12px;line-height:1.4}
+.pc-feature-icon{flex-shrink:0;font-size:13px;line-height:1.4;min-width:16px}
+.pc-free .pc-feature{color:var(--text2)}
+.pc-pro .pc-feature{color:#d1d5db}
+.pc-auto .pc-feature{color:#9ca3af}
+.pc-cta{width:100%;border:none;border-radius:14px;padding:15px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;letter-spacing:.2px}
+.pc-cta:active{transform:scale(.98)}
+.pc-cta-free{background:var(--bg);color:var(--text2);border:1.5px solid var(--border)}
+.pc-cta-pro{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);box-shadow:0 4px 16px rgba(201,168,76,.35)}
+.pc-cta-auto{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff}
+.pc-hint{text-align:center;margin-top:9px;font-size:10px;color:#6b7280}
+
+.trust-bar{display:flex;justify-content:center;gap:16px;padding:14px 0;margin-bottom:22px;flex-wrap:wrap;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--text2)}
+.trust-item svg{width:13px;height:13px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+.comparison-section{margin-bottom:26px}
+.comparison-title{font-size:16px;font-weight:800;letter-spacing:-.4px;margin-bottom:14px;text-align:center}
+.comparison-table{width:100%;border-collapse:collapse;font-size:11px}
+.comparison-table th{padding:10px 6px;text-align:center;font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);border-bottom:2px solid var(--border)}
+.comparison-table th:first-child{text-align:left;width:44%}
+.comparison-table td{padding:9px 6px;border-bottom:1px solid var(--border2);vertical-align:middle}
+.comparison-table td:first-child{font-size:11px;color:var(--text2);font-weight:500}
+.comparison-table td:not(:first-child){text-align:center}
+.ct-yes{color:var(--green);font-size:15px;font-weight:700}
+.ct-no{color:var(--border);font-size:15px}
+.ct-partial{font-size:10px;font-weight:700;color:var(--amber)}
+.ct-cat td{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);padding:14px 6px 4px;border-bottom:none;background:var(--bg)}
+.cp-free{color:var(--text2)}
+.cp-pro{color:var(--gold)}
+.cp-auto{color:#7c3aed}
+
+.testimonials-section{margin-bottom:26px}
+.testimonials-title{font-size:16px;font-weight:800;letter-spacing:-.4px;margin-bottom:14px;text-align:center}
+.testimonial-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.testimonial-scroll::-webkit-scrollbar{display:none}
+.testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;min-width:210px;max-width:210px;flex-shrink:0;box-shadow:var(--shadow)}
+.testimonial-stars{color:var(--gold-light);font-size:13px;margin-bottom:8px;letter-spacing:2px}
+.testimonial-text{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:8px}
+.testimonial-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--dark2),var(--dark3));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gold-light);flex-shrink:0}
+.testimonial-name{font-size:11px;font-weight:700}
+.testimonial-role{font-size:10px;color:var(--text3);margin-top:1px}
+
+.pricing-faq-section{margin-bottom:12px}
+.pricing-faq-title{font-size:16px;font-weight:800;letter-spacing:-.4px;margin-bottom:14px;text-align:center}
+.pfaq-item{border-bottom:1px solid var(--border2)}
+.pfaq-item:last-child{border:none}
+.pfaq-q{display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;font-size:13px;font-weight:600;gap:12px;user-select:none}
+.pfaq-arrow{flex-shrink:0;transition:transform .2s;width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round}
+.pfaq-item.open .pfaq-arrow{transform:rotate(180deg)}
+.pfaq-a{font-size:12px;color:var(--text2);line-height:1.7;padding-bottom:14px;display:none}
+.pfaq-item.open .pfaq-a{display:block}
+
 /* MODAL */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;display:none;align-items:flex-end;backdrop-filter:blur(4px)}
 .modal.on{display:flex}
@@ -699,17 +791,17 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
         <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Planes disponibles</div>
         <div class="plan-row">
           <div class="plan-badge badge-free">Free</div>
-          <div class="plan-info"><div class="plan-name">Básico</div><div class="plan-desc">5 preguntas IA/día</div></div>
+          <div class="plan-info"><div class="plan-name">Gratuito</div><div class="plan-desc">20 consultas IA/mes</div></div>
           <div class="plan-price">Gratis</div>
         </div>
-        <div class="plan-row">
-          <div class="plan-badge badge-pro">Pro</div>
-          <div class="plan-info"><div class="plan-name">Pro</div><div class="plan-desc">30 preguntas IA/día + informes</div></div>
-          <div class="plan-price">9 €/mes</div>
+        <div class="plan-row" style="background:var(--gold-bg);margin:0 -4px;padding:0 4px;border-radius:8px">
+          <div class="plan-badge badge-pro">⭐ Pro</div>
+          <div class="plan-info"><div class="plan-name" style="color:var(--gold)">Pro</div><div class="plan-desc">IA ilimitada + análisis avanzados</div></div>
+          <div class="plan-price" style="color:var(--gold)">9 €/mes</div>
         </div>
         <div class="plan-row">
-          <div class="plan-badge badge-fin">Financiero</div>
-          <div class="plan-info"><div class="plan-name">Financiero</div><div class="plan-desc">IA ilimitada + asesor dedicado</div></div>
+          <div class="plan-badge badge-fin">Auto+</div>
+          <div class="plan-info"><div class="plan-name">Autónomos+</div><div class="plan-desc">Fiscal completo + escáner IA</div></div>
           <div class="plan-price">19 €/mes</div>
         </div>
       </div>
@@ -939,61 +1031,218 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
 
       <!-- PLANES -->
       <div class="sec" id="sec-planes">
-        <div class="sec-head"><h2>Planes</h2><p>Elige el que mejor se adapta a ti</p></div>
 
-        <div class="plan-card" id="plan-free" onclick="selectPlan('free')">
-          <div class="plan-card-header">
-            <div><div class="plan-badge badge-free" style="display:inline-block;margin-bottom:6px">Gratuito</div><div class="plan-card-name">Básico</div></div>
-            <div class="plan-card-price">0 €<span>/mes</span></div>
-          </div>
-          <div style="font-size:11px;color:var(--text2);margin-bottom:8px">Sin tarjeta · Para siempre gratis</div>
-          <div class="plan-card-desc">Para empezar a controlar tus finanzas.</div>
-          <div class="plan-feature">3 preguntas al asesor IA por día</div>
-          <div class="plan-feature">Registro de ingresos y gastos (5 últimos)</div>
-          <div class="plan-feature">Resumen financiero básico</div>
-          <div class="plan-feature">Próximos vencimientos fiscales</div>
+        <!-- Hero -->
+        <div class="pricing-hero">
+          <div class="pricing-hero-badge">⭐ El asesor financiero que trabaja por ti</div>
+          <h2 class="pricing-hero-title">Invierte 9 €/mes.<br>Ahorra cientos.</h2>
+          <p class="pricing-hero-sub">El 91% de usuarios Pro recuperan la cuota en el primer mes optimizando sus finanzas</p>
         </div>
 
-        <div class="plan-card featured" id="plan-pro" onclick="selectPlan('pro')">
-          <div class="plan-popular">Más popular</div>
-          <div class="plan-card-header">
-            <div><div class="plan-badge badge-pro" style="display:inline-block;margin-bottom:6px">Pro</div><div class="plan-card-name">Pro</div></div>
-            <div style="text-align:right">
-              <div class="plan-card-price">9 €<span>/mes</span></div>
-              <div style="font-size:10px;color:var(--text2)">IVA incl. · 7,44 € + 1,56 € IVA</div>
+        <!-- Savings callout -->
+        <div class="savings-callout">
+          <div class="savings-callout-title">💡 Un autónomo ahorra de media 180 € al trimestre en deducciones que desconocía</div>
+          <div class="savings-callout-sub">Pecunia las detecta automáticamente con IA</div>
+        </div>
+
+        <!-- Plan Gratuito -->
+        <div class="pricing-card-new pc-free">
+          <div class="pc-plan-name">Gratuito</div>
+          <div class="pc-price"><span class="pc-price-amount">0 €</span><span class="pc-price-period">/mes · para siempre</span></div>
+          <div class="pc-desc">Para empezar a controlar tus finanzas sin compromiso.</div>
+          <ul class="pc-features">
+            <li class="pc-feature"><span class="pc-feature-icon">✓</span> Registro de gastos e ingresos</li>
+            <li class="pc-feature"><span class="pc-feature-icon">✓</span> Dashboard básico</li>
+            <li class="pc-feature"><span class="pc-feature-icon">✓</span> Estadísticas básicas</li>
+            <li class="pc-feature"><span class="pc-feature-icon">✓</span> Objetivos financieros básicos</li>
+            <li class="pc-feature"><span class="pc-feature-icon">✓</span> 20 consultas IA al mes</li>
+            <li class="pc-feature"><span class="pc-feature-icon" style="opacity:.35">✗</span><span style="opacity:.4;text-decoration:line-through"> Predicciones avanzadas</span></li>
+            <li class="pc-feature"><span class="pc-feature-icon" style="opacity:.35">✗</span><span style="opacity:.4;text-decoration:line-through"> Herramientas fiscales</span></li>
+          </ul>
+          <button class="pc-cta pc-cta-free" onclick="showToast('Ya usas el plan gratuito · Mejora a Pro para desbloquear todo')">Plan actual · Gratis</button>
+        </div>
+
+        <!-- Plan Pro (featured) -->
+        <div class="pricing-card-new pc-pro">
+          <div class="pc-popular-badge">⭐ MÁS POPULAR</div>
+          <div style="margin-top:20px">
+            <div class="pc-plan-name">Pro</div>
+            <div class="pc-price"><span class="pc-price-amount">9 €</span><span class="pc-price-period">/mes · IVA incl.</span></div>
+            <div class="pc-desc">Tu asesor financiero personal impulsado por IA. La herramienta que se paga sola.</div>
+            <div class="pc-divider"></div>
+            <ul class="pc-features">
+              <li class="pc-feature"><span class="pc-feature-icon">✨</span> IA financiera ilimitada</li>
+              <li class="pc-feature"><span class="pc-feature-icon">📊</span> Predicción de gastos y ahorro</li>
+              <li class="pc-feature"><span class="pc-feature-icon">🔍</span> Detección de gastos innecesarios</li>
+              <li class="pc-feature"><span class="pc-feature-icon">🔔</span> Detección de suscripciones olvidadas</li>
+              <li class="pc-feature"><span class="pc-feature-icon">📈</span> Análisis automático de hábitos</li>
+              <li class="pc-feature"><span class="pc-feature-icon">🎯</span> Objetivos avanzados de ahorro</li>
+              <li class="pc-feature"><span class="pc-feature-icon">📋</span> Informes PDF mensuales</li>
+              <li class="pc-feature"><span class="pc-feature-icon">⚡</span> Alertas inteligentes personalizadas</li>
+              <li class="pc-feature"><span class="pc-feature-icon">📅</span> Comparativas mensuales</li>
+              <li class="pc-feature"><span class="pc-feature-icon">🤖</span> Recomendaciones personalizadas IA</li>
+            </ul>
+            <button class="pc-cta pc-cta-pro" onclick="selectPlan('pro')">Activar Pro · 9 €/mes →</button>
+            <div class="pc-hint">Sin permanencia · Cancela cuando quieras</div>
+          </div>
+        </div>
+
+        <!-- Plan Autónomos+ -->
+        <div class="pricing-card-new pc-auto">
+          <div class="pc-plan-name">Autónomos+</div>
+          <div class="pc-price"><span class="pc-price-amount">19 €</span><span class="pc-price-period">/mes · IVA incl.</span></div>
+          <div class="pc-desc">Todo lo que necesita un autónomo para controlar su negocio y no perder ni un euro en impuestos.</div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li class="pc-feature"><span class="pc-feature-icon">🧾</span> Gestión completa de facturas</li>
+            <li class="pc-feature"><span class="pc-feature-icon">📷</span> Escáner IA de facturas y tickets</li>
+            <li class="pc-feature"><span class="pc-feature-icon">💶</span> IVA e IRPF estimados automáticamente</li>
+            <li class="pc-feature"><span class="pc-feature-icon">🏛️</span> Gastos deducibles inteligentes</li>
+            <li class="pc-feature"><span class="pc-feature-icon">📆</span> Calendario fiscal personalizado</li>
+            <li class="pc-feature"><span class="pc-feature-icon">📤</span> Exportación para gestoría</li>
+            <li class="pc-feature"><span class="pc-feature-icon">📑</span> Informes fiscales avanzados</li>
+            <li class="pc-feature"><span class="pc-feature-icon">🤝</span> Asistente fiscal especializado IA</li>
+            <li class="pc-feature" style="color:#a78bfa;font-weight:600"><span class="pc-feature-icon">➕</span> Todo lo del plan Pro incluido</li>
+          </ul>
+          <button class="pc-cta pc-cta-auto" onclick="selectPlan('financiero')">Activar Autónomos+ · 19 €/mes</button>
+          <div class="pc-hint">Pago mensual · Sin permanencia</div>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="trust-bar">
+          <div class="trust-item">
+            <svg viewBox="0 0 13 14" stroke="var(--green)"><path d="M6.5 1L1.5 3v4c0 2.5 2 4.5 5 5 3-.5 5-2.5 5-5V3L6.5 1z"/></svg>
+            Datos cifrados EU
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 14 14" stroke="var(--green)"><polyline points="2 7 5.5 10.5 12 3"/></svg>
+            Sin permanencia
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 14 14" stroke="var(--green)"><rect x="1" y="3" width="12" height="9" rx="1.5"/><path d="M1 6.5h12"/></svg>
+            Pago seguro PayPal
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 14 14" stroke="var(--green)"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v3l2 1.5"/></svg>
+            Activo en &lt;24 h
+          </div>
+        </div>
+
+        <!-- Comparativa -->
+        <div class="comparison-section">
+          <div class="comparison-title">Comparativa completa</div>
+          <div class="card" style="overflow:hidden;padding:0">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th><span class="cp-free" style="font-size:10px;font-weight:800">Free</span></th>
+                  <th><span class="cp-pro" style="font-size:10px;font-weight:800">Pro</span></th>
+                  <th><span class="cp-auto" style="font-size:10px;font-weight:800">Auto+</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ct-cat"><td colspan="4">IA &amp; Inteligencia</td></tr>
+                <tr><td>Consultas IA</td><td class="ct-partial">20/mes</td><td class="ct-yes">∞</td><td class="ct-yes">∞</td></tr>
+                <tr><td>Análisis de hábitos</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Detección suscripciones</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Recomendaciones IA</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr class="ct-cat"><td colspan="4">Seguimiento financiero</td></tr>
+                <tr><td>Movimientos</td><td class="ct-partial">5 últ.</td><td class="ct-yes">∞</td><td class="ct-yes">∞</td></tr>
+                <tr><td>Dashboard</td><td class="ct-partial">Básico</td><td class="ct-yes">Completo</td><td class="ct-yes">Completo</td></tr>
+                <tr><td>Predicción de gastos</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Alertas inteligentes</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Comparativas mensuales</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr class="ct-cat"><td colspan="4">Informes</td></tr>
+                <tr><td>Estadísticas</td><td class="ct-partial">Básicas</td><td class="ct-yes">Avanzadas</td><td class="ct-yes">Avanzadas</td></tr>
+                <tr><td>Informes PDF</td><td class="ct-no">—</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Exportación gestoría</td><td class="ct-no">—</td><td class="ct-no">—</td><td class="ct-yes">✓</td></tr>
+                <tr class="ct-cat"><td colspan="4">Herramientas fiscales</td></tr>
+                <tr><td>Vencimientos fiscales</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td><td class="ct-yes">✓</td></tr>
+                <tr><td>IVA e IRPF automático</td><td class="ct-no">—</td><td class="ct-no">—</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Gastos deducibles IA</td><td class="ct-no">—</td><td class="ct-no">—</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Escáner facturas IA</td><td class="ct-no">—</td><td class="ct-no">—</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Calendario fiscal</td><td class="ct-no">—</td><td class="ct-no">—</td><td class="ct-yes">✓</td></tr>
+                <tr><td>Asistente fiscal IA</td><td class="ct-no">—</td><td class="ct-no">—</td><td class="ct-yes">✓</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align:center;margin-top:14px">
+            <button class="btn-save" style="display:inline-block;width:auto;padding:14px 32px;border-radius:14px" onclick="selectPlan('pro')">Empezar con Pro · 9 €/mes →</button>
+          </div>
+        </div>
+
+        <!-- Testimonios -->
+        <div class="testimonials-section">
+          <div class="testimonials-title">Lo que dicen nuestros usuarios</div>
+          <div class="testimonial-scroll">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"Me descubrió 3 suscripciones olvidadas. En el primer mes ya recuperé la cuota del plan Pro."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">ML</div>
+                <div><div class="testimonial-name">María L.</div><div class="testimonial-role">Diseñadora freelance · Pro</div></div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"Como autónomo, antes tardaba horas buscando deducciones. Ahora la IA las detecta sola."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">CR</div>
+                <div><div class="testimonial-name">Carlos R.</div><div class="testimonial-role">Consultor IT · Autónomos+</div></div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"Pasé del plan gratuito al Pro en la primera semana. La diferencia en los análisis es brutal."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">SG</div>
+                <div><div class="testimonial-name">Sara G.</div><div class="testimonial-role">Profesora · Pro</div></div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"El calendario fiscal me salvó de una sanción de 200 €. Vale cada euro del plan."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">JM</div>
+                <div><div class="testimonial-name">Javier M.</div><div class="testimonial-role">Autónomo · Autónomos+</div></div>
+              </div>
             </div>
           </div>
-          <div class="plan-card-desc">Para autónomos y profesionales que quieren control total.</div>
-          <div class="plan-feature plan-feature-check">30 preguntas IA al día</div>
-          <div class="plan-feature plan-feature-check">Centro fiscal completo (IVA, IRPF, deducibles)</div>
-          <div class="plan-feature plan-feature-check">Movimientos ilimitados + categorías</div>
-          <div class="plan-feature plan-feature-check">Alertas de vencimientos fiscales</div>
-          <div class="plan-feature plan-feature-check">Todo lo del plan Básico</div>
-          <button class="btn-save" style="margin-top:14px" onclick="event.stopPropagation();selectPlan('pro')">Activar Pro · 9 €/mes</button>
         </div>
 
-        <div class="plan-card" id="plan-financiero" onclick="selectPlan('financiero')">
-          <div class="plan-card-header">
-            <div><div class="plan-badge badge-fin" style="display:inline-block;margin-bottom:6px">Financiero</div><div class="plan-card-name">Financiero</div></div>
-            <div style="text-align:right">
-              <div class="plan-card-price">19 €<span>/mes</span></div>
-              <div style="font-size:10px;color:var(--text2)">IVA incl. · 15,70 € + 3,30 € IVA</div>
+        <!-- FAQ de precios -->
+        <div class="pricing-faq-section">
+          <div class="pricing-faq-title">Preguntas frecuentes</div>
+          <div class="card card-pad">
+            <div class="pfaq-item" onclick="togglePfaq(this)">
+              <div class="pfaq-q">¿Puedo cancelar en cualquier momento?<svg class="pfaq-arrow" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg></div>
+              <div class="pfaq-a">Sí, sin permanencia ni penalización. Escríbenos a jonathandiaz2008pro@gmail.com y cancelamos en el mismo día.</div>
+            </div>
+            <div class="pfaq-item" onclick="togglePfaq(this)">
+              <div class="pfaq-q">¿Cómo funciona el pago?<svg class="pfaq-arrow" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg></div>
+              <div class="pfaq-a">Pagas mensualmente vía PayPal. Recibes confirmación por email y activamos tu plan en menos de 24 horas. Sin sorpresas.</div>
+            </div>
+            <div class="pfaq-item" onclick="togglePfaq(this)">
+              <div class="pfaq-q">¿Qué diferencia hay entre Pro y Autónomos+?<svg class="pfaq-arrow" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg></div>
+              <div class="pfaq-a">Pro es ideal para cualquier persona que quiera IA ilimitada y análisis avanzados. Autónomos+ añade todo lo fiscal: IVA, IRPF, escáner de facturas, gastos deducibles y exportación para tu gestor.</div>
+            </div>
+            <div class="pfaq-item" onclick="togglePfaq(this)">
+              <div class="pfaq-q">¿Puedo probar Pro antes de pagar?<svg class="pfaq-arrow" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg></div>
+              <div class="pfaq-a">El plan gratuito te permite conocer Pecunia. Si tienes dudas, escríbenos y te damos acceso a Pro durante 7 días gratis sin compromiso.</div>
+            </div>
+            <div class="pfaq-item" onclick="togglePfaq(this)">
+              <div class="pfaq-q">¿Mis datos financieros están seguros?<svg class="pfaq-arrow" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></svg></div>
+              <div class="pfaq-a">Sí. Usamos Supabase con cifrado TLS y Row Level Security en servidores de la UE (París, Francia), cumpliendo el RGPD. Solo tú puedes ver tus datos.</div>
             </div>
           </div>
-          <div class="plan-card-desc">Para quienes quieren asesoría financiera completa e inversión.</div>
-          <div class="plan-feature plan-feature-check">IA ilimitada sin restricciones</div>
-          <div class="plan-feature plan-feature-check">Análisis de inversiones personalizados</div>
-          <div class="plan-feature plan-feature-check">Plan de jubilación y fondos indexados</div>
-          <div class="plan-feature plan-feature-check">Asesor humano disponible</div>
-          <div class="plan-feature plan-feature-check">Todo lo del plan Pro</div>
-          <button class="btn-save" style="margin-top:14px;background:#1e3a5f" onclick="event.stopPropagation();selectPlan('financiero')">Activar Financiero · 19 €/mes</button>
         </div>
 
-        <div style="text-align:center;font-size:11px;color:var(--text2);margin-top:16px;line-height:1.8">
-          El pago se realiza vía <strong>PayPal</strong> de forma segura.<br>
-          Tu plan se activa en menos de 24 h tras el pago.<br>
-          Precios con IVA incluido (21% IVA). Servicio digital B2C.
+        <div style="text-align:center;font-size:10px;color:var(--text3);margin-top:12px;line-height:1.9;padding-bottom:4px">
+          Precios con IVA incluido (21%) · Pago vía PayPal · Activación en &lt;24 h<br>
+          Pecunia no es un asesor fiscal regulado. La información es orientativa.
         </div>
+
       </div>
 
       <!-- EDUCACIÓN -->
@@ -1128,22 +1377,28 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
 <div class="modal" id="upgrade-modal" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="modal-sheet">
     <div class="sheet-handle"></div>
-    <div class="sheet-title">Límite alcanzado</div>
-    <div class="sheet-sub">Has usado todas tus preguntas de IA hoy. Mejora tu plan para seguir.</div>
-    <div class="plan-card featured" style="margin-bottom:10px">
-      <div class="plan-popular">Más popular</div>
-      <div class="plan-card-header"><div><div class="plan-badge badge-pro" style="display:inline-block;margin-bottom:4px">Pro</div><div class="plan-card-name">Pro</div></div><div class="plan-card-price">9 €<span>/mes</span></div></div>
-      <div class="plan-feature">30 preguntas al día</div>
-      <div class="plan-feature">Centro fiscal completo</div>
-      <div class="plan-feature">Exportar PDF</div>
+    <div class="sheet-title">Has agotado tus consultas</div>
+    <div class="sheet-sub">Has usado tus 20 consultas IA de este mes. Pasa a Pro y disfruta de IA ilimitada para siempre.</div>
+
+    <!-- Pro card destacada -->
+    <div style="background:var(--dark);border:2px solid var(--gold);border-radius:18px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--gold),var(--gold-light));color:var(--dark);font-size:9px;font-weight:800;padding:3px 16px;border-radius:0 0 10px 10px;letter-spacing:.8px;text-transform:uppercase">⭐ MÁS POPULAR</div>
+      <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="font-size:16px;font-weight:800;color:#fff">Plan Pro</div>
+        <div style="font-size:22px;font-weight:800;color:#fff">9 €<span style="font-size:12px;font-weight:400;color:#6b7280">/mes</span></div>
+      </div>
+      <div style="font-size:12px;color:#9ca3af;margin-bottom:12px">IA ilimitada · Sin restricciones · Cancela cuando quieras</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:4px">
+        <div style="font-size:12px;color:#d1d5db">✨ IA financiera ilimitada</div>
+        <div style="font-size:12px;color:#d1d5db">🔍 Detección de gastos innecesarios</div>
+        <div style="font-size:12px;color:#d1d5db">📊 Predicciones y análisis avanzados</div>
+        <div style="font-size:12px;color:#d1d5db">📋 Informes PDF mensuales</div>
+      </div>
     </div>
-    <div class="plan-card" style="margin-bottom:16px">
-      <div class="plan-card-header"><div><div class="plan-badge badge-fin" style="display:inline-block;margin-bottom:4px">Financiero</div><div class="plan-card-name">Financiero</div></div><div class="plan-card-price">19 €<span>/mes</span></div></div>
-      <div class="plan-feature">IA ilimitada</div>
-      <div class="plan-feature">Asesor humano</div>
-    </div>
-    <button class="btn-save" onclick="document.getElementById('upgrade-modal').classList.remove('on');selectPlan('pro')">Activar Pro · 9 €/mes</button>
-    <button class="btn-outline" onclick="document.getElementById('upgrade-modal').classList.remove('on')">Ahora no</button>
+
+    <button class="btn-save" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark)" onclick="document.getElementById('upgrade-modal').classList.remove('on');selectPlan('pro')">Activar Pro · 9 €/mes →</button>
+    <button class="btn-outline" onclick="document.getElementById('upgrade-modal').classList.remove('on');goTo('planes')">Ver todos los planes</button>
+    <button class="btn-outline" style="border:none;color:var(--text3);margin-top:4px" onclick="document.getElementById('upgrade-modal').classList.remove('on')">Ahora no</button>
   </div>
 </div>
 
@@ -1185,9 +1440,9 @@ try {
 
 // ─── DATOS ───────────────────────────────────────────────
 const PLANS = {
-  free:       { name:'Plan Gratuito', limit:5,  chipClass:'chip-free' },
-  pro:        { name:'Plan Pro',      limit:30, chipClass:'chip-pro' },
-  financiero: { name:'Financiero',    limit:999,chipClass:'chip-fin' }
+  free:       { name:'Gratuito',    limit:20,  chipClass:'chip-free', period:'mes' },
+  pro:        { name:'Pro',         limit:999, chipClass:'chip-pro' },
+  financiero: { name:'Autónomos+',  limit:999, chipClass:'chip-fin' }
 }
 
 function isPro(){ const p = user?.plan||'free'; return p==='pro'||p==='financiero' }
@@ -1241,37 +1496,39 @@ async function saveTx(){
   }
 }
 
-// ─── AI LIMIT ────────────────────────────────────────────
-function getTodayKey(){ return 'ai_' + new Date().toISOString().slice(0,10) }
+// ─── AI LIMIT (tracking mensual para free) ───────────────
+function getMonthKey(){ return 'ai_' + new Date().toISOString().slice(0,7) }
 
 function getAiUsed(){
-  return parseInt(localStorage.getItem(getTodayKey()) || '0')
+  return parseInt(localStorage.getItem(getMonthKey()) || '0')
 }
 
 function incrementAiUsed(){
-  const k = getTodayKey()
+  const k = getMonthKey()
   localStorage.setItem(k, (getAiUsed() + 1).toString())
 }
 
 function getAiLimit(){
-  if(!user) return 5
+  if(!user) return PLANS.free.limit
   return PLANS[user.plan || 'free'].limit
 }
 
 function getAiRemaining(){
+  if(getAiLimit() >= 999) return 999
   return Math.max(0, getAiLimit() - getAiUsed())
 }
 
 function updateAiCounter(){
   const rem = getAiRemaining()
   const lim = getAiLimit()
+  const unlimited = lim >= 999
   const badge = document.getElementById('ai-counter-badge')
   const homeTag = document.getElementById('home-ai-tag')
   if(badge){
-    badge.textContent = lim >= 999 ? 'Ilimitado' : `${rem} restantes`
-    badge.className = 'ai-counter ' + (rem > 3 ? 'counter-ok' : rem > 0 ? 'counter-low' : 'counter-out')
+    badge.textContent = unlimited ? 'IA ilimitada' : `${rem} de ${lim} este mes`
+    badge.className = 'ai-counter ' + (unlimited || rem > 5 ? 'counter-ok' : rem > 0 ? 'counter-low' : 'counter-out')
   }
-  if(homeTag) homeTag.textContent = lim >= 999 ? 'IA ilimitada' : `${rem} preguntas hoy`
+  if(homeTag) homeTag.textContent = unlimited ? 'IA ilimitada' : `${rem}/${lim} consultas este mes`
 }
 
 // ─── AUTH ─────────────────────────────────────────────────
@@ -1432,7 +1689,7 @@ function initDashboard(){
   const plan = user.plan || 'free'
   const planInfo = PLANS[plan]
   const chipEl = document.getElementById('tb-plan-chip')
-  chipEl.textContent = planInfo.name + (plan==='free' ? ' · 3 preguntas/día' : plan==='pro' ? ' · 30 preguntas/día' : ' · IA ilimitada')
+  chipEl.textContent = planInfo.name + (plan==='free' ? ' · 20 consultas/mes' : ' · IA ilimitada')
   chipEl.className = 'plan-chip ' + planInfo.chipClass
   document.getElementById('prof-plan-chip').textContent = planInfo.name
   document.getElementById('prof-plan-chip').className = 'plan-chip ' + planInfo.chipClass
@@ -1982,15 +2239,18 @@ function showLegal(tab){
 
 // ─── PLANES ──────────────────────────────────────────────
 function selectPlan(p){
-  if(p === 'free'){ showToast('Ya estás en el plan gratuito'); return }
+  if(p === 'free'){ showToast('Ya usas el plan gratuito · Mejora a Pro para IA ilimitada'); return }
   const amounts = { pro: '9.00', financiero: '19.00' }
-  const labels  = { pro: 'Pecunia Pro', financiero: 'Pecunia Financiero' }
+  const labels  = { pro: 'Pecunia Pro', financiero: 'Pecunia Autónomos+' }
   const amount  = amounts[p]
   const label   = labels[p]
-  // Link de pago directo PayPal con email del vendedor
-  const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent('Pecunia ' + label)}&no_shipping=1&return=${encodeURIComponent(location.href)}`
+  const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${amount}&currency_code=EUR&item_name=${encodeURIComponent(label)}&no_shipping=1&return=${encodeURIComponent(location.href)}`
   window.open(url, '_blank')
-  showToast(`Redirigiendo a PayPal · ${amount} € (IVA incl.)`)
+  showToast(`Redirigiendo a PayPal · ${amount} € · Activo en menos de 24 h`)
+}
+
+function togglePfaq(el){
+  el.classList.toggle('open')
 }
 
 // ─── TOAST ────────────────────────────────────────────────
