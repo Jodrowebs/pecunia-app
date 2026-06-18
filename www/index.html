@@ -948,8 +948,7 @@ async function doLogin(){
       const { data, error } = await sb.auth.signInWithPassword({ email, password: pass })
       if(error){ showToast('Email o contraseña incorrectos'); return }
       const { data: profile } = await sb.from('profiles').select('*').eq('id', data.user.id).single()
-      if(!profile){ showToast('Perfil no encontrado'); return }
-      user = { ...profile, email: data.user.email }
+      user = { ...(profile||{}), id: data.user.id, email: data.user.email, plan: profile?.plan||'free', name: profile?.name||email.split('@')[0] }
       const { data: txData } = await sb.from('transactions').select('*').eq('user_id', data.user.id).order('created_at', { ascending: false })
       transactions = txData || []
       enterApp()
@@ -964,6 +963,9 @@ async function doLogin(){
       if(tx) transactions = JSON.parse(tx)
       enterApp()
     }
+  } catch(e){
+    showToast('Error de conexión. Inténtalo de nuevo.')
+    console.error(e)
   } finally {
     btn.textContent = 'Entrar'
     btn.disabled = false
