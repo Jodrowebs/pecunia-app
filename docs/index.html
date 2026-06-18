@@ -1611,7 +1611,7 @@ async function doRegister(){
   if(sb){
     const { data, error } = await sb.auth.signUp({
       email, password: pass,
-      options: { emailRedirectTo: null, data: { name } }
+      options: { data: { name } }
     })
     if(error){ showToast(error.message === 'User already registered' ? 'Ese email ya está registrado' : 'Error al registrar: ' + error.message); return }
     const profile = { id: data.user.id, name, mode: regMode, income, expenses, plan: 'free' }
