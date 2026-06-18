@@ -1333,24 +1333,28 @@ if(sb){
   })
 }
 
-;(async ()=>{
-  await loadUser()
+function hideSplash(){
+  const s = document.getElementById('splash')
+  s.style.transition = 'opacity .35s'
+  s.style.opacity = '0'
   setTimeout(()=>{
-    const s = document.getElementById('splash')
-    s.style.transition = 'opacity .4s'
-    s.style.opacity = '0'
-    setTimeout(()=>{
-      s.style.display = 'none'
-      if(user){
-        document.getElementById('app').style.display = 'flex'
-        setTimeout(()=>document.getElementById('app').classList.add('on'), 50)
-        initDashboard()
-        updateAiCounter()
-      } else {
-        document.getElementById('auth-screen').classList.add('on')
-      }
-    }, 400)
-  }, 1200)
+    s.style.display = 'none'
+    if(user){
+      document.getElementById('app').style.display = 'flex'
+      setTimeout(()=>document.getElementById('app').classList.add('on'), 30)
+      initDashboard()
+      updateAiCounter()
+    } else {
+      document.getElementById('auth-screen').classList.add('on')
+    }
+  }, 350)
+}
+
+;(async ()=>{
+  const t = setTimeout(hideSplash, 3000) // fallback máximo 3s
+  try { await loadUser() } catch(e){ console.warn(e) }
+  clearTimeout(t)
+  hideSplash()
 })()
 </script>
 </body>
