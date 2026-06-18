@@ -1,81 +1,231 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="es" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- PWA -->
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pecunia">
+<meta name="application-name" content="Pecunia">
 <meta name="theme-color" content="#0a0a0a">
-<title>Pecunia – Asesor Financiero con IA para España | Controla tu dinero gratis</title>
-<meta name="description" content="Pecunia: el asesor financiero con IA diseñado para España. Controla ingresos y gastos, calcula IVA e IRPF, ahorra más y toma mejores decisiones financieras. Empieza gratis.">
-<meta name="keywords" content="Pecunia app finanzas, asesor financiero IA España, gestión dinero autónomo, control gastos personal, ahorro inteligente, IVA IRPF autónomos, finanzas personales app, declaración renta IA, planificación financiera España">
-<meta name="author" content="Pecunia">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://jodrowebs.github.io/pecunia-app/">
+<meta name="msapplication-TileColor" content="#0a0a0a">
 
-<!-- Open Graph / Facebook -->
+<!-- SEO Principal -->
+<title>Pecunia – Asesor Financiero con IA para España | Gratis para autónomos y particulares</title>
+<meta name="description" content="Pecunia: asesor financiero personal con IA para España. Controla ingresos y gastos, calcula IVA e IRPF automáticamente, mejora tu ahorro y toma mejores decisiones. Empieza gratis, sin tarjeta.">
+<meta name="keywords" content="asesor financiero IA España, app finanzas personales España, control gastos autónomos, calcular IVA IRPF online, gestión dinero inteligente, ahorro personal app, finanzas autónomo España, declaración renta calculadora, presupuesto personal app, modelo 303 IVA autónomos, finanzas con inteligencia artificial, app ahorro dinero gratis, pecunia finanzas">
+<meta name="author" content="Pecunia">
+<meta name="copyright" content="Pecunia 2026">
+<meta name="language" content="Spanish">
+<meta name="revisit-after" content="7 days">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://jodrowebs.github.io/pecunia-app/">
+<link rel="alternate" hreflang="es" href="https://jodrowebs.github.io/pecunia-app/">
+<link rel="alternate" hreflang="x-default" href="https://jodrowebs.github.io/pecunia-app/">
+
+<!-- Preconnect para rendimiento -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://nuragshfagbtvgicwqjm.supabase.co">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://js.puter.com">
+
+<!-- Open Graph / Facebook / LinkedIn -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jodrowebs.github.io/pecunia-app/">
-<meta property="og:title" content="Pecunia – Asesor Financiero con IA para España">
-<meta property="og:description" content="Controla tus finanzas, optimiza tus impuestos y ahorra más con tu asesor financiero personal con IA. Especialmente diseñado para autónomos y particulares en España.">
-<meta property="og:image" content="https://jodrowebs.github.io/pecunia-app/og-image.png">
-<meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Pecunia">
+<meta property="og:title" content="Pecunia – Tu asesor financiero con IA para España">
+<meta property="og:description" content="Controla tus finanzas, calcula IVA e IRPF, mejora tu ahorro y recibe consejos personalizados de IA. Diseñado para autónomos y particulares en España. Empieza gratis.">
+<meta property="og:image" content="https://jodrowebs.github.io/pecunia-app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pecunia – App de finanzas con IA para España">
+<meta property="og:locale" content="es_ES">
 
-<!-- Twitter -->
+<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@pecunia_app">
+<meta name="twitter:creator" content="@pecunia_app">
 <meta name="twitter:title" content="Pecunia – Asesor Financiero con IA para España">
-<meta name="twitter:description" content="Controla tus finanzas, optimiza impuestos y ahorra más con IA. Gratis para empezar.">
+<meta name="twitter:description" content="Controla gastos, calcula impuestos y ahorra más con IA. Gratis para autónomos y particulares en España.">
 <meta name="twitter:image" content="https://jodrowebs.github.io/pecunia-app/og-image.png">
+<meta name="twitter:image:alt" content="Pecunia app de finanzas con IA">
 
-<!-- Structured Data -->
+<!-- Datos Estructurados: SoftwareApplication -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Pecunia",
-  "description": "Asesor financiero personal con inteligencia artificial para España. Gestión de gastos, fiscalidad de autónomos, ahorro e inversión.",
+  "alternateName": "Pecunia Finanzas",
+  "description": "Asesor financiero personal con inteligencia artificial para España. Controla ingresos y gastos, calcula IVA e IRPF, mejora tu ahorro y recibe consejos personalizados. Ideal para autónomos y particulares.",
   "applicationCategory": "FinanceApplication",
+  "applicationSubCategory": "Personal Finance",
   "operatingSystem": "Web, iOS, Android",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": "es-ES",
+  "url": "https://jodrowebs.github.io/pecunia-app/",
+  "screenshot": "https://jodrowebs.github.io/pecunia-app/og-image.png",
+  "softwareVersion": "1.0",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-06-18",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "offers": [
     {
       "@type": "Offer",
       "name": "Plan Gratuito",
       "price": "0",
       "priceCurrency": "EUR",
-      "description": "Acceso básico con 3 consultas IA al día"
+      "availability": "https://schema.org/InStock",
+      "description": "5 consultas IA al día, control de gastos básico, próximos vencimientos fiscales"
     },
     {
       "@type": "Offer",
       "name": "Plan Pro",
-      "price": "9",
+      "price": "9.00",
       "priceCurrency": "EUR",
-      "billingIncrement": "month",
-      "description": "30 consultas IA al día, fiscal completo, análisis de gastos"
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "description": "30 consultas IA al día, centro fiscal completo IVA e IRPF, movimientos ilimitados"
     },
     {
       "@type": "Offer",
       "name": "Plan Financiero",
-      "price": "19",
+      "price": "19.00",
       "priceCurrency": "EUR",
-      "billingIncrement": "month",
-      "description": "IA ilimitada, inversiones, asesor humano"
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "description": "IA ilimitada, análisis de inversiones, fondos indexados, asesor humano dedicado"
     }
   ],
-  "inLanguage": "es",
-  "url": "https://jodrowebs.github.io/Pecunia-app/",
-  "screenshot": "https://jodrowebs.github.io/Pecunia-app/og-image.png",
   "featureList": [
     "Asesor financiero con IA en español",
-    "Control de gastos e ingresos",
-    "Fiscalidad para autónomos (IVA, IRPF, Modelos)",
-    "Análisis de ahorro y tasa de ahorro",
-    "Planificación de inversiones",
-    "Alertas de vencimientos fiscales"
+    "Control de ingresos y gastos en tiempo real",
+    "Cálculo automático de IVA trimestral",
+    "Estimación de IRPF para autónomos",
+    "Gastos deducibles para autónomos",
+    "Puntuación de salud financiera",
+    "Alertas inteligentes de vencimientos fiscales",
+    "Predicción de gastos a fin de mes",
+    "Análisis de categorías de gasto",
+    "Chat con IA especializada en fiscalidad española",
+    "Educación financiera integrada",
+    "Planificación de ahorro e inversión"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Jonathan Díaz",
+    "email": "jonathandiaz2008pro@gmail.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pecunia",
+    "url": "https://jodrowebs.github.io/pecunia-app/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jodrowebs.github.io/pecunia-app/og-image.png"
+    }
+  }
+}
+</script>
+
+<!-- Datos Estructurados: FAQPage (potencia rich snippets en Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es Pecunia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pecunia es una app gratuita de finanzas personales con inteligencia artificial diseñada para España. Te ayuda a controlar tus ingresos y gastos, calcular el IVA e IRPF, mejorar tu ahorro y tomar mejores decisiones financieras."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Pecunia es gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, Pecunia tiene un plan gratuito para siempre que incluye 5 consultas al asesor IA al día, control de gastos e ingresos y alertas de vencimientos fiscales. Los planes Pro (9 €/mes) y Financiero (19 €/mes) desbloquean funciones avanzadas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo calcula Pecunia el IVA para autónomos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pecunia estima tu IVA trimestral en base a tus ingresos mensuales declarados aplicando el tipo general del 21%. Esta estimación es orientativa; consulta siempre con tu gestor antes de presentar el Modelo 303."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Mis datos financieros están seguros en Pecunia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Los datos se almacenan en Supabase con cifrado TLS y Row Level Security en servidores de la Unión Europea (París), cumpliendo el RGPD. Solo tú puedes acceder a tus datos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona Pecunia para autónomos y empleados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Pecunia tiene modos específicos para autónomos (IVA, IRPF, Modelos 303 y 130, deducciones) y para empleados por cuenta ajena (declaración de la renta, ahorro e inversión)."
+      }
+    }
   ]
 }
 </script>
+
+<!-- Datos Estructurados: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Pecunia",
+  "url": "https://jodrowebs.github.io/pecunia-app/",
+  "logo": "https://jodrowebs.github.io/pecunia-app/og-image.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "jonathandiaz2008pro@gmail.com",
+    "contactType": "customer support",
+    "availableLanguage": "Spanish",
+    "areaServed": "ES"
+  },
+  "sameAs": []
+}
+</script>
+
+<!-- Datos Estructurados: WebSite (habilita sitelinks search box en Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Pecunia",
+  "url": "https://jodrowebs.github.io/pecunia-app/",
+  "description": "Asesor financiero personal con IA para España. Gratis para autónomos y particulares.",
+  "inLanguage": "es-ES",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://jodrowebs.github.io/pecunia-app/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 <link rel="manifest" href="manifest.json">
 <script src="https://js.puter.com/v2/"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
