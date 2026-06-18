@@ -356,6 +356,97 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
 .typing-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#c8c0b4;animation:td .9s infinite;margin:0 2px}
 .typing-dot:nth-child(2){animation-delay:.15s}.typing-dot:nth-child(3){animation-delay:.3s}
 @keyframes td{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+
+/* HEALTH SCORE */
+.health-card{background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);border-radius:var(--r);padding:18px;margin-bottom:12px;position:relative;overflow:hidden;border:1px solid #2a2a2a}
+.health-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%);pointer-events:none}
+.health-label{font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.health-row{display:flex;align-items:center;gap:14px}
+.health-score-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px;font-weight:800;color:#fff;position:relative}
+.health-score-circle svg{position:absolute;inset:0;width:64px;height:64px;transform:rotate(-90deg)}
+.health-score-num{position:relative;z-index:1}
+.health-details{flex:1}
+.health-status{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.health-sub{font-size:11px;color:#6b7280;line-height:1.5}
+.health-bars{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.hbar-row{display:flex;align-items:center;gap:8px}
+.hbar-label{font-size:10px;color:#6b7280;width:80px;flex-shrink:0}
+.hbar-track{flex:1;height:4px;background:#2a2a2a;border-radius:2px;overflow:hidden}
+.hbar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .8s ease}
+.hbar-val{font-size:10px;font-weight:700;color:#9ca3af;width:28px;text-align:right;flex-shrink:0}
+
+/* CATEGORY CHART */
+.cat-chart{margin-top:4px}
+.cat-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cat-row:last-child{margin:0}
+.cat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cat-name{font-size:12px;font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-bar-wrap{width:80px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden;flex-shrink:0}
+.cat-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.cat-amount{font-size:11px;font-weight:700;color:var(--text2);min-width:44px;text-align:right;flex-shrink:0}
+
+/* INSIGHT CARD */
+.insight-card{background:linear-gradient(135deg,var(--gold-bg),#fffef9);border:1.5px solid rgba(201,168,76,.3);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.insight-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.insight-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.insight-icon svg{width:15px;height:15px;stroke:var(--dark);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.insight-title{font-size:13px;font-weight:700}
+.insight-item{font-size:12px;color:var(--text2);padding:5px 0;border-bottom:1px solid rgba(201,168,76,.15);line-height:1.5}
+.insight-item:last-child{border:none;padding-bottom:0}
+.insight-item strong{color:var(--text)}
+
+/* PREDICTION */
+.pred-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:18px;margin-bottom:12px}
+.pred-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2)}
+.pred-row:last-child{border:none}
+.pred-label{font-size:12px;color:var(--text2);font-weight:500}
+.pred-val{font-size:13px;font-weight:700}
+
+/* GOAL CARD */
+.goal-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:18px;margin-bottom:12px}
+.goal-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.goal-add-btn{font-size:12px;font-weight:600;color:var(--gold);cursor:pointer;background:none;border:none;font-family:inherit}
+
+/* ONBOARDING */
+#onboarding{position:fixed;inset:0;background:var(--dark);z-index:850;display:none;flex-direction:column;overflow:hidden}
+#onboarding.on{display:flex}
+#onboarding::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(201,168,76,.1) 0%,transparent 70%);pointer-events:none}
+.ob-top{padding:calc(60px + var(--safe-top)) 28px 32px;text-align:center}
+.ob-step{font-size:11px;font-weight:600;color:#6b7280;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+.ob-title{font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:8px;line-height:1.2}
+.ob-sub{font-size:14px;color:#9ca3af;line-height:1.6}
+.ob-body{background:var(--surface);border-radius:28px 28px 0 0;flex:1;padding:28px 24px calc(40px + var(--safe-bot));overflow-y:auto}
+.ob-options{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.ob-option{border:1.5px solid var(--border);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px;background:#fff}
+.ob-option.selected{border-color:var(--gold);background:var(--gold-bg)}
+.ob-option-icon{width:36px;height:36px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.ob-option-text{flex:1}
+.ob-option-title{font-size:13px;font-weight:600}
+.ob-option-desc{font-size:11px;color:var(--text2);margin-top:2px}
+.ob-check{width:20px;height:20px;border-radius:50%;background:var(--gold);display:none;align-items:center;justify-content:center;flex-shrink:0}
+.ob-check svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ob-option.selected .ob-check{display:flex}
+.ob-progress{display:flex;gap:6px;justify-content:center;margin-bottom:20px}
+.ob-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all .3s}
+.ob-dot.active{background:var(--gold);width:18px;border-radius:3px}
+
+/* LEGAL MODAL */
+#legal-modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;display:none;align-items:flex-end;backdrop-filter:blur(4px)}
+#legal-modal.on{display:flex}
+.legal-sheet{background:var(--surface);border-radius:28px 28px 0 0;width:100%;padding:20px 20px calc(32px + var(--safe-bot));max-height:88vh;overflow-y:auto}
+.legal-title{font-size:20px;font-weight:800;margin-bottom:4px}
+.legal-sub{font-size:12px;color:var(--text2);margin-bottom:20px}
+.legal-section{margin-bottom:18px}
+.legal-section h3{font-size:13px;font-weight:700;margin-bottom:6px}
+.legal-section p{font-size:12px;color:var(--text2);line-height:1.7}
+.legal-tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:20px;padding-bottom:2px}
+.legal-tabs::-webkit-scrollbar{display:none}
+.legal-tab{padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;background:#fff;font-family:inherit;transition:all .2s;color:var(--text2)}
+.legal-tab.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+.faq-item{border-bottom:1px solid var(--border2);padding:14px 0}
+.faq-item:last-child{border:none}
+.faq-q{font-size:13px;font-weight:600;margin-bottom:6px;cursor:pointer}
+.faq-a{font-size:12px;color:var(--text2);line-height:1.7}
 </style>
 </head>
 <body>
@@ -375,6 +466,49 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
   <div class="splash-name">Pecunia</div>
   <div class="splash-sub">Tu asesor financiero con IA</div>
   <div class="splash-bar"></div>
+</div>
+
+<!-- ONBOARDING -->
+<div id="onboarding">
+  <div class="ob-top">
+    <div class="ob-step" id="ob-step-label">Paso 1 de 3</div>
+    <div class="ob-title" id="ob-title">¿Cuál es tu objetivo principal?</div>
+    <div class="ob-sub" id="ob-sub">Pecunia personalizará tu experiencia según tus metas</div>
+  </div>
+  <div class="ob-body">
+    <div class="ob-progress"><div class="ob-dot active" id="obp0"></div><div class="ob-dot" id="obp1"></div><div class="ob-dot" id="obp2"></div></div>
+    <div id="ob-step-1">
+      <div class="ob-options">
+        <div class="ob-option" onclick="obSelect(this,'objetivo','ahorro')"><div class="ob-option-icon">💰</div><div class="ob-option-text"><div class="ob-option-title">Ahorrar más</div><div class="ob-option-desc">Quiero aumentar mi tasa de ahorro</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+        <div class="ob-option" onclick="obSelect(this,'objetivo','gastos')"><div class="ob-option-icon">📊</div><div class="ob-option-text"><div class="ob-option-title">Controlar mis gastos</div><div class="ob-option-desc">Ver exactamente en qué gasto</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+        <div class="ob-option" onclick="obSelect(this,'objetivo','fiscal')"><div class="ob-option-icon">🧾</div><div class="ob-option-text"><div class="ob-option-title">Optimizar mis impuestos</div><div class="ob-option-desc">IVA, IRPF y deducciones como autónomo</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+        <div class="ob-option" onclick="obSelect(this,'objetivo','inversion')"><div class="ob-option-icon">📈</div><div class="ob-option-text"><div class="ob-option-title">Empezar a invertir</div><div class="ob-option-desc">Fondos, ETFs y plan de jubilación</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+      </div>
+      <button class="btn-primary" onclick="obNext(1)">Continuar</button>
+    </div>
+    <div id="ob-step-2" style="display:none">
+      <div class="ob-options">
+        <div class="ob-option" onclick="obSelect(this,'edad','18-25')"><div class="ob-option-icon">🎓</div><div class="ob-option-text"><div class="ob-option-title">18-25 años</div><div class="ob-option-desc">Empezando mi vida financiera</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+        <div class="ob-option" onclick="obSelect(this,'edad','26-35')"><div class="ob-option-icon">💼</div><div class="ob-option-text"><div class="ob-option-title">26-35 años</div><div class="ob-option-desc">Construyendo mi patrimonio</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+        <div class="ob-option" onclick="obSelect(this,'edad','36-50')"><div class="ob-option-icon">🏠</div><div class="ob-option-text"><div class="ob-option-title">36-50 años</div><div class="ob-option-desc">Consolidando y planificando</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+        <div class="ob-option" onclick="obSelect(this,'edad','50+')"><div class="ob-option-icon">🌟</div><div class="ob-option-text"><div class="ob-option-title">Más de 50 años</div><div class="ob-option-desc">Optimizando para la jubilación</div></div><div class="ob-check"><svg viewBox="0 0 10 8"><path d="M1 4l3 3 5-6"/></svg></div></div>
+      </div>
+      <button class="btn-primary" onclick="obNext(2)">Continuar</button>
+      <button class="btn-outline" onclick="obNext(2)" style="margin-top:8px">Saltar</button>
+    </div>
+    <div id="ob-step-3" style="display:none;text-align:center">
+      <div style="font-size:56px;margin-bottom:16px">🎉</div>
+      <div style="font-size:20px;font-weight:800;margin-bottom:8px;letter-spacing:-.4px">¡Todo listo!</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:24px">Tu asesor financiero personal está configurado.<br>Añade tus primeros movimientos y la IA empezará a analizar tus finanzas.</div>
+      <div class="insight-card" style="text-align:left;margin-bottom:20px">
+        <div class="insight-header"><div class="insight-icon"><svg viewBox="0 0 15 15"><path d="M7.5 1v13M1 7.5h13"/></svg></div><div class="insight-title">Tip de bienvenida</div></div>
+        <div class="insight-item">Añade tus <strong>ingresos y gastos</strong> del mes para que la IA analice tu situación real.</div>
+        <div class="insight-item">Haz preguntas al <strong>Asesor IA</strong> sobre tu fiscalidad, ahorro o inversión.</div>
+        <div class="insight-item">Revisa el <strong>Centro Fiscal</strong> para no perderte ningún vencimiento.</div>
+      </div>
+      <button class="btn-primary" onclick="obFinish()">Empezar a usar Pecunia</button>
+    </div>
+  </div>
 </div>
 
 <!-- AUTH SCREEN -->
@@ -479,6 +613,27 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
 
       <!-- INICIO -->
       <div class="sec on" id="sec-inicio">
+
+        <!-- Health Score -->
+        <div class="health-card" id="health-card">
+          <div class="health-label">Salud financiera</div>
+          <div class="health-row">
+            <div class="health-score-circle">
+              <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" fill="none" stroke="#2a2a2a" stroke-width="5"/><circle cx="32" cy="32" r="28" fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-dasharray="176" id="health-arc" stroke-dashoffset="176" stroke-linecap="round"/><defs><linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#f5c842"/></linearGradient></defs></svg>
+              <div class="health-score-num" id="health-num">—</div>
+            </div>
+            <div class="health-details">
+              <div class="health-status" id="health-status">Calculando...</div>
+              <div class="health-sub" id="health-sub">Añade movimientos para ver tu puntuación</div>
+            </div>
+          </div>
+          <div class="health-bars" id="health-bars"></div>
+        </div>
+
+        <!-- Smart Alerts -->
+        <div id="smart-alerts"></div>
+
+        <!-- Stats grid -->
         <div class="stat-grid" id="stat-grid-inicio">
           <div class="stat-card"><div class="stat-label">Ingresos este mes</div><div class="stat-value pos" id="st-income">0 €</div></div>
           <div class="stat-card"><div class="stat-label">Gastos este mes</div><div class="stat-value" id="st-expenses">0 €</div></div>
@@ -486,6 +641,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
           <div class="stat-card"><div class="stat-label">Tasa de ahorro</div><div class="stat-value pos" id="st-savrate">0%</div></div>
         </div>
 
+        <!-- AI Widget -->
         <div class="ai-widget">
           <div class="ai-widget-header">
             <div class="ai-badge"><div class="ai-dot"></div><span>Pecunia IA</span></div>
@@ -498,9 +654,31 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
           </div>
         </div>
 
+        <!-- Insights IA -->
+        <div id="insights-card" style="display:none" class="insight-card">
+          <div class="insight-header">
+            <div class="insight-icon"><svg viewBox="0 0 15 15"><path d="M7.5 1a6.5 6.5 0 1 0 0 13A6.5 6.5 0 0 0 7.5 1zM7.5 4v4l2.5 2.5"/></svg></div>
+            <div class="insight-title">Análisis IA de tus finanzas</div>
+          </div>
+          <div id="insights-list"></div>
+        </div>
+
+        <!-- Category Chart -->
+        <div class="card card-pad" id="cat-chart-card" style="display:none">
+          <div class="card-head"><div class="card-title">Gastos por categoría</div><span class="card-link" id="cat-total"></span></div>
+          <div class="cat-chart" id="cat-chart"></div>
+        </div>
+
+        <!-- Prediction -->
+        <div class="card card-pad" id="pred-card" style="display:none">
+          <div class="card-head"><div class="card-title">Predicción este mes</div></div>
+          <div id="pred-rows"></div>
+        </div>
+
+        <!-- Recent transactions -->
         <div class="card card-pad">
           <div class="card-head"><div class="card-title">Movimientos recientes</div><span class="card-link" onclick="goTo('finanzas')">Ver todos</span></div>
-          <div id="tx-list-home"><div style="font-size:13px;color:var(--text2);text-align:center;padding:16px 0">Aún no hay movimientos.<br>Añade el primero en Finanzas.</div></div>
+          <div id="tx-list-home"><div style="font-size:13px;color:var(--text2);text-align:center;padding:16px 0">Aún no hay movimientos.<br>Añade el primero con el botón +</div></div>
         </div>
       </div>
 
@@ -714,7 +892,30 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
             <div style="font-size:14px;font-weight:600" id="prof-mode">—</div>
           </div>
         </div>
+        <div class="card" style="margin-top:12px">
+          <div class="edu-item" onclick="showLegal('privacidad')">
+            <div class="edu-ico-wrap"><svg viewBox="0 0 18 18"><path d="M9 2L3 5v5c0 3.5 2.5 6 6 7 3.5-1 6-3.5 6-7V5L9 2z"/></svg></div>
+            <div class="edu-info"><div class="edu-title">Política de privacidad</div></div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"><path d="M5 2l5 5-5 5"/></svg>
+          </div>
+          <div class="edu-item" onclick="showLegal('terminos')">
+            <div class="edu-ico-wrap"><svg viewBox="0 0 18 18"><rect x="3" y="2" width="12" height="14" rx="2"/><path d="M6 6h6M6 9h6M6 12h4"/></svg></div>
+            <div class="edu-info"><div class="edu-title">Términos y condiciones</div></div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"><path d="M5 2l5 5-5 5"/></svg>
+          </div>
+          <div class="edu-item" onclick="showLegal('faq')">
+            <div class="edu-ico-wrap"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 12v.5M9 6a2 2 0 0 1 0 4"/></svg></div>
+            <div class="edu-info"><div class="edu-title">Preguntas frecuentes</div></div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"><path d="M5 2l5 5-5 5"/></svg>
+          </div>
+          <div class="edu-item" onclick="showLegal('contacto')">
+            <div class="edu-ico-wrap"><svg viewBox="0 0 18 18"><path d="M3 4h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M16 5L9 11 2 5"/></svg></div>
+            <div class="edu-info"><div class="edu-title">Contacto y soporte</div></div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"><path d="M5 2l5 5-5 5"/></svg>
+          </div>
+        </div>
         <button class="btn-outline" style="margin-top:12px" onclick="doLogout()">Cerrar sesión</button>
+        <div style="text-align:center;font-size:10px;color:var(--text3);margin-top:16px">Pecunia v1.0 · jonathandiaz2008pro@gmail.com</div>
       </div>
 
     </div>
@@ -791,12 +992,29 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
       <div class="plan-feature">IA ilimitada</div>
       <div class="plan-feature">Asesor humano</div>
     </div>
-    <button class="btn-save" onclick="showToast('Próximamente disponible');document.getElementById('upgrade-modal').classList.remove('on')">Mejorar plan</button>
+    <button class="btn-save" onclick="document.getElementById('upgrade-modal').classList.remove('on');selectPlan('pro')">Activar Pro · 9 €/mes</button>
     <button class="btn-outline" onclick="document.getElementById('upgrade-modal').classList.remove('on')">Ahora no</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- LEGAL MODAL -->
+<div id="legal-modal" onclick="if(event.target===this)this.classList.remove('on')">
+  <div class="legal-sheet">
+    <div class="sheet-handle"></div>
+    <div class="legal-title" id="legal-title">Política de privacidad</div>
+    <div class="legal-sub" id="legal-sub">Última actualización: junio 2026</div>
+    <div class="legal-tabs">
+      <button class="legal-tab active" onclick="showLegal('privacidad')">Privacidad</button>
+      <button class="legal-tab" onclick="showLegal('terminos')">Términos</button>
+      <button class="legal-tab" onclick="showLegal('faq')">FAQ</button>
+      <button class="legal-tab" onclick="showLegal('contacto')">Contacto</button>
+    </div>
+    <div id="legal-content"></div>
+    <button class="btn-outline" style="margin-top:16px" onclick="document.getElementById('legal-modal').classList.remove('on')">Cerrar</button>
+  </div>
+</div>
 
 <script>
 // ─── SUPABASE ─────────────────────────────────────────────
@@ -995,6 +1213,7 @@ async function doRegister(){
     transactions = []
     showToast('¡Bienvenido a Pecunia!')
     enterApp()
+    if(!user.onboarded) setTimeout(showOnboarding, 600)
   } else {
     // Modo local
     if(localStorage.getItem('Pecunia_user')){
@@ -1005,6 +1224,7 @@ async function doRegister(){
     localStorage.setItem('Pecunia_user', JSON.stringify(user))
     transactions = []
     enterApp()
+    setTimeout(showOnboarding, 600)
   }
 }
 
@@ -1068,9 +1288,26 @@ function initDashboard(){
   document.getElementById('st-benefit').textContent = benefit.toLocaleString('es-ES') + ' €'
   document.getElementById('st-savrate').textContent = savRate + '%'
 
-  // Mensaje inicio con nota de plan para free
-  const freeNote = !isPro() ? `<br><br><span style="font-size:11px;color:#6b7280">Plan gratuito · ${getAiRemaining()} preguntas hoy · <span style="color:#2563eb;cursor:pointer" onclick="goTo('planes')">Mejorar plan</span></span>` : ''
-  document.getElementById('home-ai-bubble').innerHTML = `Hola <strong>${user.name.split(' ')[0]}</strong>. Tu beneficio neto es <strong>${benefit.toLocaleString('es-ES')} €/mes</strong> con una tasa de ahorro del <strong>${savRate}%</strong>.<br>Pregúntame lo que quieras sobre tus finanzas.${freeNote}`
+  // Mensaje inicio inteligente con datos reales
+  const gastosTx = transactions.filter(t=>t.type==='gasto')
+  const totalGastosTx = gastosTx.reduce((s,t)=>s+parseFloat(t.amount),0)
+  const catTotals = {}
+  gastosTx.forEach(t=>{ catTotals[t.cat]=(catTotals[t.cat]||0)+parseFloat(t.amount) })
+  const topCat = Object.entries(catTotals).sort((a,b)=>b[1]-a[1])[0]
+  const healthScore = calcHealthScore()
+
+  let aiMsg = `Hola <strong>${user.name.split(' ')[0]}</strong>. `
+  if(transactions.length === 0){
+    aiMsg += `Aún no tienes movimientos registrados. Añade tus ingresos y gastos y analizaré tu situación en detalle.`
+  } else if(transactions.length < 5){
+    aiMsg += `Llevas <strong>${transactions.length} movimiento${transactions.length>1?'s':''}</strong> registrados. Tu salud financiera es <strong>${healthScore}/100</strong>. Sigue añadiendo datos para un análisis más completo.`
+  } else {
+    aiMsg += `Tu salud financiera es <strong>${healthScore}/100</strong>. Has gastado <strong>${totalGastosTx.toLocaleString('es-ES')} €</strong> en total`
+    if(topCat) aiMsg += `, siendo <strong>${topCat[0]}</strong> tu categoría principal (${topCat[1].toLocaleString('es-ES')} €)`
+    aiMsg += `. Tasa de ahorro: <strong>${savRate}%</strong>.`
+  }
+  const freeNote = !isPro() ? `<br><br><span style="font-size:11px;color:#6b7280">${getAiRemaining()} preguntas hoy · <span style="color:var(--gold);cursor:pointer;font-weight:600" onclick="goTo('planes')">Mejorar plan</span></span>` : ''
+  document.getElementById('home-ai-bubble').innerHTML = aiMsg + freeNote
 
   // Fiscal: bloqueo para free, datos reales para Pro+
   const lockWrap = document.getElementById('fiscal-lock-wrap')
@@ -1100,6 +1337,11 @@ function initDashboard(){
   }
 
   renderTxList()
+  renderHealthScore()
+  generateSmartAlerts()
+  renderCategoryChart()
+  renderPrediction()
+  renderInsights()
 
   document.getElementById('chat-msgs').innerHTML = `<div class="bubble ai">Hola <strong>${user.name.split(' ')[0]}</strong>. Soy Pecunia, tu asesor financiero con IA.<br><br>Tienes ingresos de <strong>${income.toLocaleString('es-ES')} €/mes</strong> y una tasa de ahorro del <strong>${savRate}%</strong>. ¿En qué te puedo ayudar hoy?</div>`
   chatHistory.length = 0
@@ -1172,19 +1414,43 @@ function buildSystemPrompt(){
   const savRate = user.income>0 ? Math.round((benefit/user.income)*100) : 0
   const modeStr = {autonomo:'autónomo/a',empleado:'empleado/a por cuenta ajena',pareja:'en pareja'}[user.mode]||user.mode
 
-  return `Eres Pecunia, un asesor financiero personal con IA especializado en España. Eres experto en fiscalidad española, ahorro, inversión y planificación financiera.
+  const gastos = transactions.filter(t=>t.type==='gasto')
+  const ingresos = transactions.filter(t=>t.type==='ingreso')
+  const totalGastos = gastos.reduce((s,t)=>s+parseFloat(t.amount),0)
+  const totalIngresos = ingresos.reduce((s,t)=>s+parseFloat(t.amount),0)
+  const catTotals = {}
+  gastos.forEach(t=>{ catTotals[t.cat]=(catTotals[t.cat]||0)+parseFloat(t.amount) })
+  const catStr = Object.entries(catTotals).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`${c}: ${v.toLocaleString('es-ES')} €`).join(', ')
+  const recentTx = transactions.slice(-5).map(t=>`${t.type==='ingreso'?'+':'-'}${parseFloat(t.amount).toLocaleString('es-ES')} € (${t.cat||''}: ${t.description||t.desc||''})`).join('\n')
+  const healthScore = calcHealthScore()
+
+  return `Eres Pecunia, un asesor financiero personal con IA especializado en España. Eres experto en fiscalidad española (IVA, IRPF, modelos trimestrales), ahorro, inversión y planificación financiera personal.
 
 Fecha actual: ${month} de ${year}. Año fiscal: ${year}.
 
-Perfil del usuario:
+PERFIL DEL USUARIO:
 - Nombre: ${user.name}
 - Situación laboral: ${modeStr}
-- Ingresos mensuales: ${user.income.toLocaleString('es-ES')} euros/mes
-- Gastos mensuales: ${user.expenses.toLocaleString('es-ES')} euros/mes
-- Beneficio neto: ${benefit.toLocaleString('es-ES')} euros/mes
+- Objetivo: ${user.objetivo || 'no especificado'}
+- Ingresos mensuales declarados: ${user.income.toLocaleString('es-ES')} €/mes
+- Gastos mensuales declarados: ${user.expenses.toLocaleString('es-ES')} €/mes
+- Beneficio neto: ${benefit.toLocaleString('es-ES')} €/mes
 - Tasa de ahorro: ${savRate}%
+- Puntuación salud financiera: ${healthScore}/100
 
-Responde siempre en español, de forma clara, directa y personalizada para este usuario. Máximo 5 líneas salvo que pidan más detalle. Para consejos fiscales añade: "Consulta con tu gestor fiscal antes de aplicarlo."`
+MOVIMIENTOS REGISTRADOS (${transactions.length} en total):
+- Total ingresos registrados: ${totalIngresos.toLocaleString('es-ES')} €
+- Total gastos registrados: ${totalGastos.toLocaleString('es-ES')} €
+- Gastos por categoría: ${catStr || 'sin datos aún'}
+- Últimos movimientos:\n${recentTx || 'ninguno aún'}
+
+INSTRUCCIONES:
+- Responde SIEMPRE en español, de forma clara, directa y MUY personalizada usando los datos reales del usuario.
+- Si tienes datos de transacciones, cítalos específicamente (ej: "has gastado X € en Ocio este mes").
+- Nunca respondas de forma genérica si tienes datos suficientes.
+- Máximo 5-6 líneas salvo que pidan más detalle.
+- Para consejos fiscales añade siempre: "Consulta con tu gestor fiscal antes de aplicarlo."
+- Si el usuario no tiene datos, anímale a añadir movimientos para un análisis más preciso.`
 }
 
 async function callAI(msg){
@@ -1294,6 +1560,263 @@ async function saveTransaction(){
   closeAddModal()
   renderTxList()
   showToast('Movimiento guardado')
+}
+
+// ─── ONBOARDING ──────────────────────────────────────────
+const obData = {}
+function obSelect(el, key, val){
+  el.closest('.ob-options').querySelectorAll('.ob-option').forEach(o=>o.classList.remove('selected'))
+  el.classList.add('selected')
+  obData[key] = val
+}
+function obNext(step){
+  document.getElementById('ob-step-'+step).style.display = 'none'
+  const next = step + 1
+  if(next <= 3){
+    document.getElementById('ob-step-'+next).style.display = 'block'
+    document.querySelectorAll('.ob-dot').forEach((d,i)=>{
+      d.classList.toggle('active', i <= step)
+    })
+    const titles = ['','¿Cuántos años tienes?','¡Ya casi está!']
+    const subs = ['','Esto nos ayuda a darte mejores consejos','Tu perfil financiero está listo']
+    document.getElementById('ob-title').textContent = titles[step] || '¡Todo listo!'
+    document.getElementById('ob-sub').textContent = subs[step] || ''
+    document.getElementById('ob-step-label').textContent = `Paso ${next} de 3`
+  }
+}
+function obFinish(){
+  if(user){
+    user.objetivo = obData.objetivo || 'ahorro'
+    user.edad = obData.edad || ''
+    user.onboarded = true
+    saveUser()
+  }
+  document.getElementById('onboarding').classList.remove('on')
+  initDashboard()
+  updateAiCounter()
+}
+function showOnboarding(){
+  document.getElementById('onboarding').classList.add('on')
+}
+
+// ─── HEALTH SCORE ─────────────────────────────────────────
+function calcHealthScore(){
+  if(!user) return 0
+  const income = user.income || 0
+  const expenses = user.expenses || 0
+  if(income === 0) return 0
+  const savRate = Math.max(0, (income - expenses) / income)
+  const expRatio = Math.min(1, expenses / income)
+  let score = 0
+  score += Math.min(40, savRate * 200)
+  score += Math.max(0, 30 - expRatio * 30)
+  if(transactions.length > 5) score += 15
+  if(transactions.length > 20) score += 10
+  if(isPro()) score += 5
+  return Math.min(100, Math.round(score))
+}
+
+function renderHealthScore(){
+  const score = calcHealthScore()
+  const numEl = document.getElementById('health-num')
+  const arcEl = document.getElementById('health-arc')
+  const statusEl = document.getElementById('health-status')
+  const subEl = document.getElementById('health-sub')
+  const barsEl = document.getElementById('health-bars')
+  if(!numEl) return
+
+  numEl.textContent = score || '—'
+  const circumference = 176
+  const offset = circumference - (score / 100) * circumference
+  if(arcEl) setTimeout(()=>{ arcEl.style.strokeDashoffset = offset }, 200)
+
+  let status, sub, color
+  if(score >= 75){ status='Excelente'; sub='Tus finanzas están en muy buen estado'; color='#4ade80' }
+  else if(score >= 55){ status='Buena'; sub='Hay margen de mejora en el ahorro'; color='#f5c842' }
+  else if(score >= 35){ status='Regular'; sub='Revisa tus gastos con la IA'; color='#fb923c' }
+  else if(score > 0){ status='Mejorable'; sub='Empieza añadiendo tus movimientos'; color='#f87171' }
+  else { status='Sin datos'; sub='Añade ingresos y gastos para calcular'; color='#6b7280' }
+
+  if(statusEl){ statusEl.textContent = status; statusEl.style.color = color }
+  if(subEl) subEl.textContent = sub
+
+  const income = user.income || 0
+  const expenses = user.expenses || 0
+  const savRate = income > 0 ? Math.round(((income-expenses)/income)*100) : 0
+  if(barsEl) barsEl.innerHTML = `
+    <div class="hbar-row"><div class="hbar-label">Ahorro</div><div class="hbar-track"><div class="hbar-fill" style="width:${Math.min(100,savRate)}%"></div></div><div class="hbar-val">${savRate}%</div></div>
+    <div class="hbar-row"><div class="hbar-label">Control</div><div class="hbar-track"><div class="hbar-fill" style="width:${Math.min(100,transactions.length*5)}%"></div></div><div class="hbar-val">${Math.min(100,transactions.length*5)}%</div></div>
+    <div class="hbar-row"><div class="hbar-label">Plan</div><div class="hbar-track"><div class="hbar-fill" style="width:${isPro()?100:isFinanciero()?100:20}%"></div></div><div class="hbar-val">${isPro()||isFinanciero()?'Pro':'Free'}</div></div>
+  `
+}
+
+// ─── CATEGORY CHART ───────────────────────────────────────
+const CAT_COLORS = {
+  'Alimentación':'#f87171','Transporte':'#fb923c','Ocio':'#a78bfa',
+  'Software':'#60a5fa','Salud':'#34d399','Formación':'#fbbf24',
+  'Gestoría':'#94a3b8','Servicios profesionales':'#c9a84c','Otros':'#9ca3af'
+}
+
+function renderCategoryChart(){
+  const gastos = transactions.filter(t=>t.type==='gasto')
+  if(!gastos.length){ document.getElementById('cat-chart-card').style.display='none'; return }
+  document.getElementById('cat-chart-card').style.display='block'
+  const totals = {}
+  gastos.forEach(t=>{ totals[t.cat]=(totals[t.cat]||0)+parseFloat(t.amount) })
+  const sorted = Object.entries(totals).sort((a,b)=>b[1]-a[1]).slice(0,5)
+  const max = sorted[0]?.[1] || 1
+  const total = gastos.reduce((s,t)=>s+parseFloat(t.amount),0)
+  document.getElementById('cat-total').textContent = total.toLocaleString('es-ES') + ' € total'
+  document.getElementById('cat-chart').innerHTML = sorted.map(([cat,amt])=>{
+    const color = CAT_COLORS[cat] || '#9ca3af'
+    const pct = Math.round((amt/max)*100)
+    return `<div class="cat-row">
+      <div class="cat-dot" style="background:${color}"></div>
+      <div class="cat-name">${cat}</div>
+      <div class="cat-bar-wrap"><div class="cat-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+      <div class="cat-amount">${amt.toLocaleString('es-ES')} €</div>
+    </div>`
+  }).join('')
+}
+
+// ─── SMART ALERTS ─────────────────────────────────────────
+function generateSmartAlerts(){
+  const alertsEl = document.getElementById('smart-alerts')
+  if(!alertsEl) return
+  const alerts = []
+  const income = user?.income || 0
+  const expenses = user?.expenses || 0
+  const savRate = income > 0 ? Math.round(((income-expenses)/income)*100) : 0
+  const gastos = transactions.filter(t=>t.type==='gasto')
+  const totalGastos = gastos.reduce((s,t)=>s+parseFloat(t.amount),0)
+
+  if(savRate < 10 && income > 0) alerts.push({ type:'warn', icon:'⚠️', title:'Tasa de ahorro muy baja', text:`Solo ahorras el ${savRate}% de tus ingresos. Lo recomendado es mínimo el 20%.` })
+  if(expenses > income * 0.9 && income > 0) alerts.push({ type:'warn', icon:'🔴', title:'Gastos elevados', text:`Tus gastos (${expenses.toLocaleString('es-ES')} €) representan más del 90% de tus ingresos.` })
+  if(transactions.length === 0) alerts.push({ type:'info', icon:'💡', title:'Añade tus movimientos', text:'Cuantos más datos tengas, más precisos serán los análisis de la IA.' })
+  if(transactions.length > 3){
+    const totals = {}
+    gastos.forEach(t=>{ totals[t.cat]=(totals[t.cat]||0)+parseFloat(t.amount) })
+    const topCat = Object.entries(totals).sort((a,b)=>b[1]-a[1])[0]
+    if(topCat && totalGastos > 0){
+      const pct = Math.round((topCat[1]/totalGastos)*100)
+      if(pct > 40) alerts.push({ type:'warn', icon:'📊', title:`${pct}% en ${topCat[0]}`, text:`El ${pct}% de tus gastos son en ${topCat[0]} (${topCat[1].toLocaleString('es-ES')} €). Considera si puedes reducirlo.` })
+    }
+  }
+  if(savRate >= 20 && income > 0) alerts.push({ type:'good', icon:'✅', title:'¡Buen ritmo de ahorro!', text:`Ahorras el ${savRate}% de tus ingresos. Considera invertir el excedente.` })
+
+  alertsEl.innerHTML = alerts.map(a=>`
+    <div class="alert alert-${a.type==='good'?'info':'warn'}" style="${a.type==='good'?'background:var(--green-bg);border-color:#bbf7d0':''}">
+      <div class="alert-icon" style="${a.type==='good'?'background:#dcfce7':''}"><span style="font-size:18px">${a.icon}</span></div>
+      <div class="alert-text"><strong>${a.title}</strong><span>${a.text}</span></div>
+    </div>`).join('')
+}
+
+// ─── PREDICTION ───────────────────────────────────────────
+function renderPrediction(){
+  const predEl = document.getElementById('pred-card')
+  const rowsEl = document.getElementById('pred-rows')
+  if(!predEl || !rowsEl) return
+  const income = user?.income || 0
+  const expenses = user?.expenses || 0
+  if(!income){ predEl.style.display='none'; return }
+  predEl.style.display='block'
+  const now = new Date()
+  const daysInMonth = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate()
+  const daysPassed = now.getDate()
+  const ratio = daysPassed / daysInMonth
+  const gastosActuales = transactions.filter(t=>t.type==='gasto').reduce((s,t)=>s+parseFloat(t.amount),0)
+  const proyeccion = ratio > 0 ? Math.round(gastosActuales / ratio) : expenses
+  const proyAhorro = income - proyeccion
+  rowsEl.innerHTML = `
+    <div class="pred-row"><div class="pred-label">Días transcurridos</div><div class="pred-val">${daysPassed} de ${daysInMonth}</div></div>
+    <div class="pred-row"><div class="pred-label">Gastos actuales</div><div class="pred-val neg">${gastosActuales.toLocaleString('es-ES')} €</div></div>
+    <div class="pred-row"><div class="pred-label">Proyección fin de mes</div><div class="pred-val ${proyeccion > income ? 'neg':'warn'}">${proyeccion.toLocaleString('es-ES')} €</div></div>
+    <div class="pred-row"><div class="pred-label">Ahorro previsto</div><div class="pred-val ${proyAhorro>=0?'pos':'neg'}">${proyAhorro.toLocaleString('es-ES')} €</div></div>
+  `
+}
+
+// ─── INSIGHTS IA (basados en datos reales) ─────────────────
+function renderInsights(){
+  const card = document.getElementById('insights-card')
+  const list = document.getElementById('insights-list')
+  if(!card || !list) return
+  const insights = []
+  const income = user?.income || 0
+  const expenses = user?.expenses || 0
+  const savRate = income>0 ? Math.round(((income-expenses)/income)*100) : 0
+  const gastos = transactions.filter(t=>t.type==='gasto')
+  const ingresos = transactions.filter(t=>t.type==='ingreso')
+  const totalG = gastos.reduce((s,t)=>s+parseFloat(t.amount),0)
+
+  if(income > 0 && expenses > 0){
+    const potAhorro = Math.round((income-expenses)*0.2)
+    if(potAhorro > 0) insights.push(`Si reduces tus gastos un <strong>10%</strong>, podrías ahorrar <strong>${potAhorro.toLocaleString('es-ES')} € más al mes</strong>.`)
+    if(savRate < 20) insights.push(`Tu tasa de ahorro es <strong>${savRate}%</strong>. La regla 50/30/20 recomienda ahorrar al menos el <strong>20%</strong>.`)
+    else insights.push(`Tu tasa de ahorro del <strong>${savRate}%</strong> es excelente. Considera invertir parte en fondos indexados.`)
+  }
+  if(gastos.length > 3){
+    const totCat = {}
+    gastos.forEach(t=>{ totCat[t.cat]=(totCat[t.cat]||0)+parseFloat(t.amount) })
+    const top = Object.entries(totCat).sort((a,b)=>b[1]-a[1])[0]
+    if(top) insights.push(`Tu mayor categoría de gasto es <strong>${top[0]}</strong> con <strong>${top[1].toLocaleString('es-ES')} €</strong>. ¿Es necesario todo?`)
+  }
+  if(user?.mode === 'autonomo' && income > 0){
+    const ivaEst = Math.round(income*0.21)
+    insights.push(`Como autónomo, reserva aprox. <strong>${ivaEst.toLocaleString('es-ES')} €/mes</strong> para el IVA trimestral.`)
+  }
+  if(!insights.length){ card.style.display='none'; return }
+  card.style.display='block'
+  list.innerHTML = insights.map(i=>`<div class="insight-item">${i}</div>`).join('')
+}
+
+// ─── LEGAL ────────────────────────────────────────────────
+const LEGAL_CONTENT = {
+  privacidad: {
+    title:'Política de privacidad',
+    html:`<div class="legal-section"><h3>1. Responsable del tratamiento</h3><p>Pecunia es un servicio operado por Jonathan Díaz (jonathandiaz2008pro@gmail.com). Los datos se almacenan en Supabase (servidores EU).</p></div>
+    <div class="legal-section"><h3>2. Datos que recogemos</h3><p>Recogemos exclusivamente: email, nombre, situación laboral, ingresos/gastos mensuales y movimientos que tú introduces. No vendemos ni compartimos tus datos con terceros.</p></div>
+    <div class="legal-section"><h3>3. Finalidad</h3><p>Tus datos se usan únicamente para ofrecerte el servicio de asesoramiento financiero personalizado con IA.</p></div>
+    <div class="legal-section"><h3>4. Tus derechos</h3><p>Puedes solicitar la eliminación de tus datos en cualquier momento escribiendo a jonathandiaz2008pro@gmail.com. Responderemos en menos de 72 horas.</p></div>
+    <div class="legal-section"><h3>5. Seguridad</h3><p>Usamos cifrado TLS, autenticación segura de Supabase y Row Level Security para que nadie más pueda acceder a tus datos.</p></div>`
+  },
+  terminos: {
+    title:'Términos y condiciones',
+    html:`<div class="legal-section"><h3>1. Servicio</h3><p>Pecunia es una herramienta de orientación financiera con IA. No somos un asesor financiero regulado. La información proporcionada es orientativa y no constituye asesoramiento fiscal o de inversión.</p></div>
+    <div class="legal-section"><h3>2. Pagos</h3><p>Los pagos se realizan vía PayPal. Los planes se activan manualmente en menos de 24 h tras confirmarse el pago. No se realizan reembolsos una vez activado el plan.</p></div>
+    <div class="legal-section"><h3>3. Uso aceptable</h3><p>No está permitido usar Pecunia para actividades ilegales, ni compartir credenciales con terceros.</p></div>
+    <div class="legal-section"><h3>4. Limitación de responsabilidad</h3><p>Pecunia no se hace responsable de decisiones financieras tomadas en base a la información proporcionada. Consulta siempre con un profesional antes de tomar decisiones importantes.</p></div>`
+  },
+  faq: {
+    title:'Preguntas frecuentes',
+    html:`<div class="faq-item"><div class="faq-q">¿Mis datos financieros están seguros?</div><div class="faq-a">Sí. Usamos Supabase con cifrado TLS y Row Level Security. Solo tú puedes ver tus datos.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se activa el plan Pro o Financiero?</div><div class="faq-a">Pagas vía PayPal y en menos de 24 h activamos tu plan manualmente. Te notificamos por email.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Puedo cancelar mi suscripción?</div><div class="faq-a">Sí, en cualquier momento. Escríbenos a jonathandiaz2008pro@gmail.com y cancelamos sin preguntas.</div></div>
+    <div class="faq-item"><div class="faq-q">¿La IA es un asesor fiscal real?</div><div class="faq-a">No. La IA ofrece orientación basada en tu perfil, pero no sustituye a un asesor fiscal colegiado. Para decisiones importantes, consulta con un profesional.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Funciona para empleados y autónomos?</div><div class="faq-a">Sí. Pecunia tiene funciones específicas para autónomos (IVA, IRPF, modelos) y para empleados (declaración de la renta, ahorro e inversión).</div></div>
+    <div class="faq-item"><div class="faq-q">¿Dónde se almacenan mis datos?</div><div class="faq-a">En servidores de Supabase ubicados en la Unión Europea (París, Francia), cumpliendo con el RGPD.</div></div>`
+  },
+  contacto: {
+    title:'Contacto y soporte',
+    html:`<div class="legal-section"><h3>Email de soporte</h3><p>jonathandiaz2008pro@gmail.com<br>Respondemos en menos de 24 horas laborables.</p></div>
+    <div class="legal-section"><h3>¿Problemas con el pago?</h3><p>Si tienes algún problema con tu suscripción, escríbenos con el asunto "Pago Pecunia" y lo resolvemos en el mismo día.</p></div>
+    <div class="legal-section"><h3>Sugerencias</h3><p>Si tienes ideas para mejorar Pecunia, nos encantaría escucharte. Escríbenos con el asunto "Sugerencia".</p></div>
+    <div style="margin-top:16px"><a href="mailto:jonathandiaz2008pro@gmail.com" style="display:block;text-align:center;background:var(--dark);color:#fff;border-radius:14px;padding:14px;font-size:14px;font-weight:700;text-decoration:none">Escribir al soporte</a></div>`
+  }
+}
+
+function showLegal(tab){
+  const modal = document.getElementById('legal-modal')
+  const content = document.getElementById('legal-content')
+  const title = document.getElementById('legal-title')
+  const sub = document.getElementById('legal-sub')
+  const data = LEGAL_CONTENT[tab]
+  if(!data) return
+  title.textContent = data.title
+  sub.textContent = 'Última actualización: junio 2026'
+  content.innerHTML = data.html
+  document.querySelectorAll('.legal-tab').forEach(t=>t.classList.remove('active'))
+  document.querySelectorAll('.legal-tab').forEach(t=>{ if(t.textContent.toLowerCase().includes(tab.slice(0,4))) t.classList.add('active') })
+  modal.classList.add('on')
 }
 
 // ─── PLANES ──────────────────────────────────────────────
