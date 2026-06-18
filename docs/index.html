@@ -731,6 +731,15 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
 </head>
 <body>
 
+<!-- UPDATE BANNER -->
+<div id="update-banner" style="display:none;position:fixed;top:0;left:0;right:0;background:linear-gradient(135deg,#c9a84c,#f0d080);color:#111;padding:11px 18px;display:none;align-items:center;justify-content:space-between;z-index:99999;font-size:13px;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25)">
+  <span>🆕 Nueva versión disponible</span>
+  <div style="display:flex;gap:8px">
+    <button onclick="applyUpdate()" style="background:#111;color:#f0d080;border:none;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:800;cursor:pointer;letter-spacing:.3px">Actualizar ahora</button>
+    <button onclick="document.getElementById('update-banner').style.display='none'" style="background:rgba(0,0,0,.15);color:#111;border:none;border-radius:8px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer">×</button>
+  </div>
+</div>
+
 <!-- SPLASH -->
 <div id="splash">
   <div class="splash-logo">
@@ -2405,15 +2414,36 @@ FORMATO DE RESPUESTA:
 - Máximo 6-8 líneas para respuestas normales. Más si piden análisis completo.
 - Para preguntas fiscales: termina con "⚠️ Verifica con tu gestor fiscal antes de aplicar."
 
-CONOCIMIENTO FISCAL ESPAÑOL QUE DEBES APLICAR:
-- IVA general: 21% | reducido: 10% | superreducido: 4%
-- IRPF ${year} tramos: hasta 12.450€ → 19% | hasta 20.200€ → 24% | hasta 35.200€ → 30% | hasta 60.000€ → 37% | hasta 300.000€ → 45% | resto → 47%
-- Autónomos: Modelo 303 (IVA trimestral), 130 (IRPF fraccionado), 100 (renta anual)
-- Cuota autónomos SS (2024): entre 230€ y 500€/mes según base elegida
-- Plan de pensiones: deducción máxima 1.500€/año (individual) + 8.500€ (empresa)
-- Fondos indexados: sin tributación hasta el reembolso (diferimiento fiscal)
-- Plusvalías: hasta 6.000€ al 19% | 6.000-50.000€ al 21% | 50.000-200.000€ al 23% | más de 200.000€ al 27%
-- Mínimo personal exento IRPF: 5.550€/año
+CONOCIMIENTO FISCAL ESPAÑOL — AÑO ${year}:
+IVA:
+- General: 21% | Reducido: 10% (alimentación procesada, transporte, hostelería) | Superreducido: 4% (alimentos básicos, libros, medicamentos)
+- Régimen simplificado IVA solo para autónomos en módulos
+
+IRPF ${year} — TRAMOS ESTATALES + AUTONÓMICOS (estimado base estatal):
+- Hasta 12.450€ → 19% | 12.451-20.200€ → 24% | 20.201-35.200€ → 30%
+- 35.201-60.000€ → 37% | 60.001-300.000€ → 45% | Más de 300.000€ → 47%
+- Mínimo personal exento: 5.550€/año (más reducciones por hijos, discapacidad, etc.)
+- Declaración Renta (Modelo 100): abril-junio del año siguiente
+
+AUTÓNOMOS ${year}:
+- Cuota SS: sistema de cotización por ingresos reales (desde 230€ hasta ~590€/mes según rendimiento neto)
+- Modelo 303 (IVA): trimestral — enero, abril, julio, octubre (del 1 al 20 del mes siguiente)
+- Modelo 130 (IRPF fraccionado): trimestral — mismas fechas
+- Modelo 390 (resumen anual IVA): enero del año siguiente
+- Gastos 100% deducibles: cuota SS, gestoría, software profesional, material, formación
+- Gastos 50% deducibles (uso mixto): teléfono, internet, vehículo
+
+INVERSIÓN Y PLUSVALÍAS ${year}:
+- Fondos indexados: sin tributación hasta reembolso (diferimiento fiscal — ventaja clave)
+- Traspaso entre fondos: sin tributación en el momento (solo al reembolso final)
+- Plusvalías: hasta 6.000€ → 19% | 6.001-50.000€ → 21% | 50.001-200.000€ → 23% | más de 200.000€ → 28%
+- Plan de pensiones: deducción máxima 1.500€/año individual + 8.500€ aportación empresa
+- PIAS: ahorro a largo plazo con beneficio fiscal al reembolso si >10 años
+- Letras del Tesoro: rentabilidad ~3-3.5% TAE (varía según subasta), tributan como plusvalía
+
+ACTUALIZACIONES IMPORTANTES:
+- Si el año fiscal activo es ${year} y hay cambios legales muy recientes que desconoces, indícalo: "Según la normativa vigente que manejo para ${year}... te recomiendo confirmar con tu gestor si ha habido cambios en las últimas semanas."
+- Nunca inventes tipos o límites. Si hay duda, cita la fuente: "según Ley IRPF art. X" o "según AEAT ${year}"
 
 INVERSIÓN Y AHORRO:
 - Recomienda fondos indexados (MSCI World, S&P 500, MSCI Europe) como base de inversión a largo plazo
@@ -3015,7 +3045,45 @@ function getNextFiscalDeadline(){
 }
 
 // ─── INIT ─────────────────────────────────────────────────
-if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{})
+// ─── SERVICE WORKER + AUTO-UPDATE ────────────────────────────
+let _swReg = null
+function showUpdateBanner(){
+  const b = document.getElementById('update-banner')
+  if(b){ b.style.display = 'flex' }
+}
+function applyUpdate(){
+  if(_swReg?.waiting){
+    _swReg.waiting.postMessage({ type: 'SKIP_WAITING' })
+  } else {
+    window.location.reload()
+  }
+}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    _swReg = reg
+    // New SW found while page is open
+    reg.addEventListener('updatefound', () => {
+      const nw = reg.installing
+      nw.addEventListener('statechange', () => {
+        if(nw.state === 'installed' && navigator.serviceWorker.controller){
+          showUpdateBanner()
+        }
+      })
+    })
+    // Already waiting (user had old tab open)
+    if(reg.waiting && navigator.serviceWorker.controller){
+      showUpdateBanner()
+    }
+    // Check for update every 30 minutes in the background
+    setInterval(() => reg.update(), 30 * 60 * 1000)
+  }).catch(()=>{})
+
+  // When new SW takes control, reload to apply update
+  let refreshing = false
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if(!refreshing){ refreshing = true; window.location.reload() }
+  })
+}
 
 // Escuchar cambios de sesión Supabase (confirmación email, etc.)
 if(sb){
