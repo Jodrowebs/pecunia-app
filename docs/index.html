@@ -1042,8 +1042,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
           <div class="lock-gate">
             <div class="lock-icon"><svg viewBox="0 0 18 18"><rect x="4" y="8" width="10" height="8" rx="2"/><path d="M6 8V6a3 3 0 0 1 6 0v2"/></svg></div>
             <div class="lock-title">Centro Fiscal completo</div>
-            <div class="lock-desc">Calcula tu IVA, IRPF y gastos deducibles en tiempo real. Solo en Plan Pro.</div>
-            <button class="lock-btn" onclick="goTo('planes')">Ver Plan Pro – 9 €/mes</button>
+            <div class="lock-desc">Calcula tu IVA, IRPF y gastos deducibles en tiempo real. Exclusivo de Plan Autónomos+.</div>
+            <button class="lock-btn" onclick="goTo('planes')">Ver Autónomos+ – 19 €/mes</button>
           </div>
         </div>
 
@@ -1633,13 +1633,14 @@ const PAYPAL_EMAIL = 'jonathandiaz2008pro@gmail.com'
 
 // ─── DATOS ───────────────────────────────────────────────
 const PLANS = {
-  free:       { name:'Gratuito',    limit:20,  chipClass:'chip-free', period:'mes' },
-  pro:        { name:'Pro',         limit:999, chipClass:'chip-pro' },
-  financiero: { name:'Autónomos+',  limit:999, chipClass:'chip-fin' }
+  free:       { name:'Gratuito',    limit:5,   txLimit:20,  chipClass:'chip-free', period:'mes' },
+  pro:        { name:'Pro',         limit:999, txLimit:9999, chipClass:'chip-pro' },
+  financiero: { name:'Autónomos+',  limit:999, txLimit:9999, chipClass:'chip-fin' }
 }
 
 function isPro(){ const p = user?.plan||'free'; return p==='pro'||p==='financiero' }
 function isFinanciero(){ return user?.plan==='financiero' }
+function getTxLimit(){ return PLANS[user?.plan||'free'].txLimit }
 
 let user = null
 let transactions = []
@@ -2008,12 +2009,12 @@ function initDashboard(){
   const freeNote = !isPro() ? `<br><br><span style="font-size:11px;color:#6b7280">${getAiRemaining()} consultas este mes · <span style="color:var(--gold);cursor:pointer;font-weight:600" onclick="goTo('planes')">Mejorar plan</span></span>` : ''
   document.getElementById('home-ai-bubble').innerHTML = aiMsg + freeNote
 
-  // Fiscal: bloqueo para free, datos reales para Pro+
+  // Fiscal: solo Autónomos+
   const lockWrap = document.getElementById('fiscal-lock-wrap')
   const fiscalInvest = document.getElementById('fiscal-invest-wrap')
-  if(isPro()){
+  if(isFinanciero()){
     lockWrap.style.display = 'none'
-    fiscalInvest.style.display = isFinanciero() ? 'none' : 'block'
+    fiscalInvest.style.display = 'none'
     if(user.mode === 'autonomo'){
       document.getElementById('fiscal-autonomo').style.display = 'block'
       document.getElementById('fiscal-empleado').style.display = 'none'
@@ -2503,6 +2504,10 @@ function sendHomeMsg(){
 
 // ─── TRANSACTIONS ─────────────────────────────────────────
 function openAddModal(){
+  if(!isPro() && transactions.length >= getTxLimit()){
+    showToast('Límite de '+getTxLimit()+' movimientos en el plan gratuito. Mejora a Pro para añadir más.', 'error')
+    return
+  }
   document.getElementById('add-modal').classList.add('on')
   setTxType('gasto')
   document.getElementById('inp-amount').value = ''
@@ -2874,6 +2879,10 @@ function getGoals(){ return JSON.parse(localStorage.getItem('pec_goals')||'[]') 
 function saveGoals(g){ localStorage.setItem('pec_goals', JSON.stringify(g)) }
 
 function openGoalModal(){
+  if(!isPro()){
+    showToast('Los objetivos financieros son exclusivos de Plan Pro y Autónomos+.', 'error')
+    return
+  }
   document.getElementById('goal-name-inp').value = ''
   document.getElementById('goal-target-inp').value = ''
   document.getElementById('goal-saved-inp').value = ''
@@ -2906,7 +2915,7 @@ function renderGoals(){
   const card = document.getElementById('goals-card')
   const list = document.getElementById('goals-list')
   if(!card || !list) return
-  if(!goals.length){ card.style.display='none'; return }
+  if(!isPro() || !goals.length){ card.style.display='none'; return }
   card.style.display='block'
   list.innerHTML = goals.map(g=>{
     const pct = Math.min(100, Math.round((g.saved/g.target)*100))
