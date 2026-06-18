@@ -973,18 +973,16 @@ async function doRegister(){
   if(pass.length < 6){ showToast('Mínimo 6 caracteres en la contraseña'); return }
 
   if(sb){
-    const btn = document.querySelector('#tab-register .btn-save')
-    btn.textContent = 'Creando cuenta...'
-    btn.disabled = true
-    const { data, error } = await sb.auth.signUp({ email, password: pass })
-    btn.textContent = 'Crear cuenta gratis'
-    btn.disabled = false
+    const { data, error } = await sb.auth.signUp({
+      email, password: pass,
+      options: { emailRedirectTo: null, data: { name } }
+    })
     if(error){ showToast(error.message === 'User already registered' ? 'Ese email ya está registrado' : 'Error al registrar: ' + error.message); return }
     const profile = { id: data.user.id, name, mode: regMode, income, expenses, plan: 'free' }
     await sb.from('profiles').insert(profile)
     user = { ...profile, email }
     transactions = []
-    showToast('¡Cuenta creada! Revisa tu email para confirmar.')
+    showToast('¡Bienvenido a Pecunia!')
     enterApp()
   } else {
     // Modo local
