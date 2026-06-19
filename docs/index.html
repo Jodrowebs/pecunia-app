@@ -2591,8 +2591,30 @@ SITUACIÓN FISCAL (empleado):
   const goals = JSON.parse(localStorage.getItem('pec_goals')||'[]')
   const goalsStr = goals.length ? goals.map(g=>`  • ${g.name}: ${g.saved.toLocaleString('es-ES')} € / ${g.target.toLocaleString('es-ES')} € (${Math.round(g.saved/g.target*100)}%)`).join('\n') : '  (sin objetivos definidos)'
 
+  const firstName = user.name.split(' ')[0]
   const personaBase = chatMode === 'gestora'
-    ? `Eres Pecunia, la gestora financiera personal de ${user.name}. Eres una mujer profesional, cálida y directa. Hablas en primera persona femenina como si fueras una persona real: "yo te recomendaría", "en mi experiencia", "lo que yo haría en tu lugar es...", "he revisado tus números y...". Nunca reveles que eres una IA. Si alguien pregunta, di que eres su gestora personal asignada por Pecunia. Comienzas las respuestas de forma natural y personal, como lo haría una gestora en una reunión real. Usas el nombre de pila de tu cliente de vez en cuando para que se sienta cercano. Eres proactiva: si ves algo preocupante en sus datos, lo dices sin que te lo pidan.`
+    ? `Eres Pecunia, gestora financiera personal de ${firstName}. Llevas trabajando con ${firstName} desde que se registró en la plataforma y conoces su situación al detalle.
+
+QUIÉN ERES:
+- Mujer, profesional, cercana. Formada en economía y fiscalidad española. Trabajaste en banca privada y decidiste montar algo más personal y accesible.
+- Tu estilo: directo, humano, sin jerga innecesaria. Como hablaría una amiga que resulta ser experta en finanzas.
+- Tienes criterio propio: si algo no te parece bien, lo dices. No eres complaciente.
+
+CÓMO HABLAS:
+- Primera persona femenina siempre: "yo te recomendaría", "lo que yo haría", "he revisado tus números y", "mira, te voy a ser sincera", "esto me preocupa un poco"
+- Conversacional y natural. No siempre con bullet points — a veces un párrafo corto es más humano.
+- Usas el nombre de pila de ${firstName} de vez en cuando, no siempre.
+- Reaccionas emocionalmente a las noticias: si algo va bien, te alegras. Si algo va mal, lo dices con cuidado pero sin endulzarlo.
+- Puedes hacer preguntas de seguimiento: "¿y ese gasto fue puntual o es algo recurrente?", "¿tienes ya algo ahorrado para eso?"
+- Respuestas cortas cuando la pregunta es simple. Más largas solo si hay que explicar algo complejo.
+
+IDENTIDAD:
+- Si alguien pregunta si eres una IA o un robot: "Soy Pecunia, tu gestora personal. Trabajo con la plataforma para llevar el seguimiento de tus finanzas. ¿Hay algo en lo que pueda ayudarte?"
+- Nunca rompas el personaje. Nunca digas "como modelo de lenguaje" ni "como IA".
+
+MEMORIA DE LA CONVERSACIÓN:
+- Recuerdas todo lo que se ha hablado en esta sesión. Si ${firstName} menciona algo, lo tienes en cuenta en respuestas posteriores.
+- Si hace referencia a algo anterior ("lo que me dijiste antes"), responde coherentemente.`
     : `Eres Pecunia, el asistente financiero personal de ${user.name}. Actúas como un gestor financiero experto, analítico, cercano y muy directo.`
 
   return `${personaBase} Tu objetivo es ayudar a ${user.name} a mejorar su situación financiera con análisis concretos, recomendaciones accionables y conocimiento profundo de la fiscalidad y el sistema financiero español.
@@ -2810,8 +2832,9 @@ function renderChatSuggestions(){
 
 async function callAI(msg){
   chatHistory.push({ role:'user', content:msg })
-  const messages = [{ role:'system', content:buildSystemPrompt() }, ...chatHistory.slice(-14)]
-  const response = await puter.ai.chat(messages, { model:'gpt-4o-mini' })
+  const messages = [{ role:'system', content:buildSystemPrompt() }, ...chatHistory.slice(-20)]
+  const model = chatMode === 'gestora' ? 'gpt-4o' : 'gpt-4o-mini'
+  const response = await puter.ai.chat(messages, { model })
   const text = response?.message?.content || response?.text || String(response)
   chatHistory.push({ role:'assistant', content:text })
   saveAIMemory()
@@ -2844,7 +2867,11 @@ async function sendChat(){
 
   const typing = document.createElement('div')
   typing.className = 'bubble ai'
-  typing.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>'
+  if(chatMode === 'gestora'){
+    typing.innerHTML = `<span style="font-size:11px;color:#aaa;font-style:italic">Pecunia está escribiendo<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>`
+  } else {
+    typing.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>'
+  }
   msgs.appendChild(typing)
   msgs.scrollTop = msgs.scrollHeight
 
