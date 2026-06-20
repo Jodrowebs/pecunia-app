@@ -2769,14 +2769,12 @@ async function speakText(text, onEnd){
   if(currentAudio){ currentAudio.pause(); currentAudio = null }
   window.speechSynthesis.cancel()
 
-  // Start interrupt listener while speaking
-  startInterruptListener()
-
   try {
     // Use Puter TTS (OpenAI nova voice — natural female)
     const audioRes = await puter.ai.txt2speech(clean, { voice: 'nova' })
     if(!voiceActive){ voiceSpeaking=false; setCallRings(false); onEnd&&onEnd(); return }
-    currentAudio = new Audio(URL.createObjectURL(await audioRes.blob()))
+    const blob = typeof audioRes.blob === 'function' ? await audioRes.blob() : audioRes
+    currentAudio = new Audio(URL.createObjectURL(blob))
     callState = 'speaking'
     startVAD()  // detect user voice while Pecunia speaks → interrupt
     currentAudio.onended = ()=>{
