@@ -151,7 +151,7 @@
       "name": "¿Pecunia es gratis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí, Pecunia tiene un plan gratuito para siempre que incluye 5 consultas al asesor IA al día, control de gastos e ingresos y alertas de vencimientos fiscales. Los planes Pro (9 €/mes) y Financiero (19 €/mes) desbloquean funciones avanzadas."
+        "text": "Sí, Pecunia tiene un plan gratuito para siempre que incluye 20 consultas al asesor IA al mes, control de gastos e ingresos y alertas de vencimientos fiscales. Los planes Pro (29 €/mes) y Autónomos+ (49 €/mes) desbloquean funciones avanzadas."
       }
     },
     {
@@ -1443,6 +1443,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
       <div class="sec" id="sec-fiscal">
         <div class="sec-head"><h2>Centro Fiscal</h2><p id="fiscal-sub">Impuestos sin sorpresas</p></div>
 
+        <!-- DISCLAIMER FISCAL — obligatorio RGPD/legal -->
+        <div style="background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:10px 12px;margin-bottom:10px;display:flex;gap:8px;align-items:flex-start">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M9 2L2 14h14L9 2z" stroke="#f5c842" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8v3M9 13h.01" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p style="font-size:11px;color:#9ca3af;line-height:1.5;margin:0"><strong style="color:#f5c842">Información orientativa.</strong> Pecunia no es un asesor fiscal regulado. Los cálculos de IVA e IRPF son estimaciones basadas en los datos que introduces y no constituyen asesoramiento fiscal. Consulta con un gestor o asesor fiscal colegiado antes de presentar cualquier declaración.</p>
+        </div>
+
         <!-- Teaser gratis: próximos vencimientos siempre visible -->
         <div class="alert alert-warn" style="margin-bottom:12px">
           <div class="alert-icon"><svg viewBox="0 0 18 18"><path d="M9 2L2 14h14L9 2z"/><path d="M9 8v3M9 13h.01"/></svg></div>
@@ -1536,7 +1542,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
         <div class="pricing-hero">
           <div class="pricing-hero-badge">⭐ El asesor financiero que trabaja por ti</div>
           <h2 class="pricing-hero-title">Invierte 9 €/mes.<br>Ahorra cientos.</h2>
-          <p class="pricing-hero-sub">El 91% de usuarios Pro recuperan la cuota en el primer mes optimizando sus finanzas</p>
+          <p class="pricing-hero-sub">Diseñado para que tomes el control real de tus finanzas desde el primer día</p>
         </div>
 
         <!-- Savings callout -->
@@ -1683,39 +1689,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,s
         <!-- Testimonios -->
         <div class="testimonials-section">
           <div class="testimonials-title">Lo que dicen nuestros usuarios</div>
-          <div class="testimonial-scroll">
-            <div class="testimonial-card">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"Me descubrió 3 suscripciones olvidadas. En el primer mes ya recuperé la cuota del plan Pro."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">ML</div>
-                <div><div class="testimonial-name">María L.</div><div class="testimonial-role">Diseñadora freelance · Pro</div></div>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"Como autónomo, antes tardaba horas buscando deducciones. Ahora la IA las detecta sola."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">CR</div>
-                <div><div class="testimonial-name">Carlos R.</div><div class="testimonial-role">Consultor IT · Autónomos+</div></div>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"Pasé del plan gratuito al Pro en la primera semana. La diferencia en los análisis es brutal."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">SG</div>
-                <div><div class="testimonial-name">Sara G.</div><div class="testimonial-role">Profesora · Pro</div></div>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"El calendario fiscal me salvó de una sanción de 200 €. Vale cada euro del plan."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">JM</div>
-                <div><div class="testimonial-name">Javier M.</div><div class="testimonial-role">Autónomo · Autónomos+</div></div>
-              </div>
-            </div>
+          <div style="background:var(--surface);border:1px dashed var(--border);border-radius:16px;padding:28px 20px;text-align:center;color:var(--text3)">
+            <div style="font-size:22px;margin-bottom:10px">💬</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text2);margin-bottom:6px">Reseñas reales próximamente</div>
+            <div style="font-size:12px;line-height:1.6">Estamos recopilando las primeras opiniones de usuarios reales.<br>Si ya usas Pecunia, <a href="mailto:jodrowebs@gmail.com" style="color:var(--gold);font-weight:600">cuéntanos tu experiencia</a>.</div>
           </div>
         </div>
 
@@ -3854,18 +3831,23 @@ function renderInsights(){
 const LEGAL_CONTENT = {
   privacidad: {
     title:'Política de privacidad',
-    html:`<div class="legal-section"><h3>1. Responsable del tratamiento</h3><p>Pecunia es un servicio operado por Jonathan Díaz (jodrowebs@gmail.com). Los datos se almacenan en Firebase (servidores EU).</p></div>
-    <div class="legal-section"><h3>2. Datos que recogemos</h3><p>Recogemos exclusivamente: email, nombre, situación laboral, ingresos/gastos mensuales y movimientos que tú introduces. No vendemos ni compartimos tus datos con terceros.</p></div>
-    <div class="legal-section"><h3>3. Finalidad</h3><p>Tus datos se usan únicamente para ofrecerte el servicio de asesoramiento financiero personalizado con IA.</p></div>
-    <div class="legal-section"><h3>4. Tus derechos</h3><p>Puedes solicitar la eliminación de tus datos en cualquier momento escribiendo a jodrowebs@gmail.com. Responderemos en menos de 72 horas.</p></div>
-    <div class="legal-section"><h3>5. Seguridad</h3><p>Usamos cifrado TLS, autenticación segura de Firebase y reglas de seguridad por usuario para que nadie más pueda acceder a tus datos.</p></div>`
+    html:`<div class="legal-section"><h3>1. Responsable del tratamiento</h3><p>Jonathan Díaz, operador de Pecunia. Contacto: jodrowebs@gmail.com. Al no superar los umbrales del art. 37 RGPD no se requiere Delegado de Protección de Datos, pero puedes dirigirte a la dirección anterior para cualquier cuestión relativa a tus datos.</p></div>
+    <div class="legal-section"><h3>2. Datos que recogemos</h3><p>Recogemos exclusivamente: email, nombre, situación laboral (empleado/autónomo/pareja), rango de edad, ingresos y gastos mensuales declarados, y los movimientos económicos que tú introduces manualmente o mediante el escáner de facturas. No recogemos datos bancarios, números de tarjeta ni credenciales de terceros.</p></div>
+    <div class="legal-section"><h3>3. Base legal del tratamiento (art. 6 RGPD)</h3><p>El tratamiento se basa en la <strong>ejecución del contrato</strong> (art. 6.1.b): los datos son necesarios para prestarte el servicio. El análisis con IA de tus datos financieros se realiza bajo tu consentimiento explícito al crear la cuenta.</p></div>
+    <div class="legal-section"><h3>4. Finalidad y plazo de conservación</h3><p>Tus datos se usan únicamente para ofrecerte el servicio de asesoramiento financiero personalizado. Los datos se conservan mientras tu cuenta esté activa. Transcurridos <strong>12 meses sin actividad</strong> te notificaremos antes de eliminarlos. Puedes solicitar la eliminación en cualquier momento.</p></div>
+    <div class="legal-section"><h3>5. Transferencias internacionales</h3><p>Los datos se almacenan en Firebase (Google LLC) en servidores de la Unión Europea (región europe-west). Google está adherida a las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea. El modelo de IA (OpenAI vía Puter.js) puede procesar temporalmente texto de tus consultas fuera de la UE; no se envían datos identificativos, solo el contenido de las preguntas.</p></div>
+    <div class="legal-section"><h3>6. Almacenamiento local</h3><p>Pecunia usa <strong>localStorage</strong> del navegador para cachear análisis, contador de consultas IA y preferencias de sesión. Estos datos permanecen en tu dispositivo y no se sincronizan con nuestros servidores.</p></div>
+    <div class="legal-section"><h3>7. Tus derechos</h3><p>Tienes derecho a acceder, rectificar, suprimir, oponerte y portar tus datos (arts. 15-20 RGPD). Escríbenos a jodrowebs@gmail.com y respondemos en menos de <strong>30 días naturales</strong>. También puedes presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en <a href="https://www.aepd.es" target="_blank" style="color:var(--gold)">www.aepd.es</a>.</p></div>
+    <div class="legal-section"><h3>8. Seguridad</h3><p>Usamos cifrado TLS en tránsito, autenticación de Firebase con reglas de acceso por usuario (nadie más puede leer tus datos) y no almacenamos contraseñas en texto plano.</p></div>`
   },
   terminos: {
     title:'Términos y condiciones',
-    html:`<div class="legal-section"><h3>1. Servicio</h3><p>Pecunia es una herramienta de orientación financiera con IA. No somos un asesor financiero regulado. La información proporcionada es orientativa y no constituye asesoramiento fiscal o de inversión.</p></div>
-    <div class="legal-section"><h3>2. Pagos</h3><p>Los pagos se realizan vía PayPal. Los planes se activan manualmente en menos de 24 h tras confirmarse el pago. No se realizan reembolsos una vez activado el plan.</p></div>
-    <div class="legal-section"><h3>3. Uso aceptable</h3><p>No está permitido usar Pecunia para actividades ilegales, ni compartir credenciales con terceros.</p></div>
-    <div class="legal-section"><h3>4. Limitación de responsabilidad</h3><p>Pecunia no se hace responsable de decisiones financieras tomadas en base a la información proporcionada. Consulta siempre con un profesional antes de tomar decisiones importantes.</p></div>`
+    html:`<div class="legal-section"><h3>1. Naturaleza del servicio</h3><p>Pecunia es una herramienta de <strong>orientación financiera con IA</strong>. No somos un asesor financiero, fiscal ni de inversión regulado. La información y los cálculos proporcionados son <strong>orientativos</strong> y no constituyen asesoramiento profesional. Consulta siempre con un gestor o asesor colegiado antes de tomar decisiones fiscales o de inversión relevantes.</p></div>
+    <div class="legal-section"><h3>2. Pagos y planes</h3><p>Los pagos se realizan vía PayPal. Los planes se activan manualmente en menos de 24 h laborables tras confirmarse el pago. Una vez activado el plan, no se realizan reembolsos salvo error imputable a Pecunia. Puedes cancelar en cualquier momento escribiendo a jodrowebs@gmail.com.</p></div>
+    <div class="legal-section"><h3>3. Límites del plan gratuito</h3><p>El plan gratuito incluye un máximo de consultas IA al mes (indicado en la interfaz). Este límite se controla en el cliente; el uso honesto es responsabilidad del usuario.</p></div>
+    <div class="legal-section"><h3>4. Uso aceptable</h3><p>No está permitido usar Pecunia para actividades ilegales, evadir impuestos, ni compartir credenciales con terceros. El acceso abusivo o automatizado puede resultar en la suspensión de la cuenta.</p></div>
+    <div class="legal-section"><h3>5. Limitación de responsabilidad</h3><p>Pecunia no se hace responsable de decisiones financieras, fiscales o de inversión tomadas en base a la información proporcionada por la IA. Los cálculos de IVA e IRPF son estimaciones y pueden no reflejar tu situación fiscal real.</p></div>
+    <div class="legal-section"><h3>6. Modificaciones</h3><p>Podemos actualizar estos términos con 15 días de preaviso por email. El uso continuado del servicio tras ese plazo implica aceptación.</p></div>`
   },
   faq: {
     title:'Preguntas frecuentes',
@@ -3878,9 +3860,10 @@ const LEGAL_CONTENT = {
   },
   contacto: {
     title:'Contacto y soporte',
-    html:`<div class="legal-section"><h3>Email de soporte</h3><p>jodrowebs@gmail.com<br>Respondemos en menos de 24 horas laborables.</p></div>
-    <div class="legal-section"><h3>¿Problemas con el pago?</h3><p>Si tienes algún problema con tu suscripción, escríbenos con el asunto "Pago Pecunia" y lo resolvemos en el mismo día.</p></div>
-    <div class="legal-section"><h3>Sugerencias</h3><p>Si tienes ideas para mejorar Pecunia, nos encantaría escucharte. Escríbenos con el asunto "Sugerencia".</p></div>
+    html:`<div class="legal-section"><h3>Email de soporte</h3><p>jodrowebs@gmail.com<br>Respondemos en menos de 24 horas laborables (L–V).<br><br><span style="font-size:11px;color:var(--text3)">Nota: actualmente usamos una dirección Gmail personal. Si dispones de dominio propio (ej. hola@pecunia.app), indica al desarrollador que actualice este campo.</span></p></div>
+    <div class="legal-section"><h3>¿Problemas con el pago?</h3><p>Escríbenos con el asunto <strong>"Pago Pecunia"</strong> e incluye el email con el que pagaste. Lo resolvemos en menos de 24 h laborables.</p></div>
+    <div class="legal-section"><h3>Eliminación de cuenta y datos</h3><p>Para eliminar tu cuenta y todos tus datos escríbenos con el asunto <strong>"Eliminar cuenta"</strong>. Ejecutamos la baja en 72 horas y te enviamos confirmación.</p></div>
+    <div class="legal-section"><h3>Sugerencias</h3><p>Si tienes ideas para mejorar Pecunia, nos encantaría escucharte. Usa el asunto <strong>"Sugerencia"</strong>.</p></div>
     <div style="margin-top:16px"><a href="mailto:jodrowebs@gmail.com" style="display:block;text-align:center;background:var(--dark);color:#fff;border-radius:14px;padding:14px;font-size:14px;font-weight:700;text-decoration:none">Escribir al soporte</a></div>`
   }
 }
